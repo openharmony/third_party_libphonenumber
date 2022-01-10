@@ -1,0 +1,39 @@
+{
+    "name": "@ohos/libphonenumber",
+    "version": "",
+    "description": "Third-party open-source software libphonenumber | 三方开源软件libphonenumber",
+    "homePage": "https://gitee.com/openharmony",
+    "license": "Apache V2",
+    "repository": "https://gitee.com/openharmony/third_party_libphonenumber",
+    "domain": "os",
+    "language": "",
+    "publishAs": "code-segment",
+    "private": false,
+    "scripts": {},
+    "tags": [
+        "third_party"
+    ],
+    "keywords": [
+        "third-party",
+        "libphonenumber"
+    ],
+    "envs": [],
+    "dirs": [],
+    "segment": {
+        "destPath": "third_party/libphonenumber"
+    },
+    "component": {
+        "name": "thirdparty_libphonenumber",
+        "subsystem": "",
+        "syscap": [],
+        "features": [],
+        "adapted_system_type": [],
+        "rom": "",
+        "ram": "",
+        "build": {
+            "sub_component": [],
+            "inner_kits": [],
+            "test": []
+        }
+    }
+}
