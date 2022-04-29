@@ -13,7 +13,7 @@
 
 import("//build/test.gni")
 
-module_output_path = "i18n/libphonenumber_test"
+module_output_path = "libphonenumber/libphonenumber_test"
 
 config("phonenumber_test_config") {
   include_dirs = [
@@ -105,6 +105,5 @@ ohos_unittest("libphonenumber_test") {
     "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
     "//third_party/protobuf/src:protobuf_standard",
-    "//utils/native/base:utils",
   ]
 }

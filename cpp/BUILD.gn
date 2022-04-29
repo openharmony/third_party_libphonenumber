@@ -81,8 +81,8 @@ ohos_shared_library("phonenumber_standard") {
     "I18N_PHONENUMBERS_USE_ICU_REGEXP",
     "HAVE_PTHREAD",
   ]
-  part_name = "common"
-  subsystem_name = "common"
+  part_name = "libphonenumber"
+  subsystem_name = "thirdparty"
   remove_configs = [ "//build/config/compiler:no_rtti" ]
   ldflags = [ "-shared" ]
   install_enable = true
