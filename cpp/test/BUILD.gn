@@ -35,7 +35,6 @@ config("phonenumber_test_config") {
     "-Wall",
     "-Werror",
     "-fPIC",
-    "-frtti",
     "-U__ANDROID__",
     "-Wno-sign-compare",
     "-Wno-error=unused-parameter",
@@ -89,11 +88,7 @@ ohos_unittest("libphonenumber_test") {
     "phonenumbers/test_util.cc",
   ]
 
-  configs = [
-    "//build/config/compiler:rtti",
-    ":phonenumber_test_config",
-  ]
-  remove_configs = [ "//build/config/compiler:no_rtti" ]
+  configs = [ ":phonenumber_test_config" ]
 
   defines = [
     "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
@@ -104,6 +99,6 @@ ohos_unittest("libphonenumber_test") {
   deps = [
     "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
-    "//third_party/protobuf/src:protobuf_standard",
+    "//third_party/protobuf:protobuf_lite",
   ]
 }
