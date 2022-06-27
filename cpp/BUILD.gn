@@ -62,6 +62,11 @@ phonenumber_source = [
   "src/phonenumbers/stringutil.cc",
   "src/phonenumbers/unicodestring.cc",
   "src/phonenumbers/utf/rune.c",
+  "src/phonenumbers/geocoding/geocoding_data.cc",
+  "src/phonenumbers/geocoding/area_code_map.cc",
+  "src/phonenumbers/geocoding/default_map_storage.cc",
+  "src/phonenumbers/geocoding/mapping_file_provider.cc",
+  "src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc",
 ]
 
 ohos_shared_library("phonenumber_standard") {
