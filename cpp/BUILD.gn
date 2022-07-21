@@ -61,7 +61,7 @@ phonenumber_source = [
   "src/phonenumbers/logger.cc",
   "src/phonenumbers/stringutil.cc",
   "src/phonenumbers/unicodestring.cc",
-  "src/phonenumbers/utf/rune.c"
+  "src/phonenumbers/utf/rune.c",
 ]
 
 ohos_shared_library("phonenumber_standard") {
