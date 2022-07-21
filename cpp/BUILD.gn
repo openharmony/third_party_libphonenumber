@@ -12,6 +12,13 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
+
+group("build_module") {
+  deps = [
+    ":geocoding",
+    ":phonenumber_standard",
+  ]
+}
 config("phonenumber_config") {
   include_dirs = [
     "//third_party/icu/icu4c/source/common",
@@ -70,6 +77,34 @@ ohos_shared_library("phonenumber_standard") {
   deps = [
     "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
+    "//third_party/protobuf:protobuf_lite",
+  ]
+  defines = [
+    "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
+    "I18N_PHONENUMBERS_USE_ICU_REGEXP",
+    "HAVE_PTHREAD",
+  ]
+  part_name = "libphonenumber"
+  subsystem_name = "thirdparty"
+  ldflags = [ "-shared" ]
+  install_enable = true
+}
+
+ohos_shared_library("geocoding") {
+  configs = [ ":phonenumber_config" ]
+  sources = [
+    "src/phonenumbers/geocoding/area_code_map.cc",
+    "src/phonenumbers/geocoding/default_map_storage.cc",
+    "src/phonenumbers/geocoding/geocoding_data.cc",
+    "src/phonenumbers/geocoding/geocoding_warpper.cc",
+    "src/phonenumbers/geocoding/mapping_file_provider.cc",
+    "src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc",
+    "src/phonenumbers/phonenumber.pb.h",
+  ]
+  deps = [
+    "//third_party/icu/icu4c:shared_icui18n",
+    "//third_party/icu/icu4c:shared_icuuc",
+    "//third_party/libphonenumber/cpp:phonenumber_standard",
     "//third_party/protobuf:protobuf_lite",
   ]
   defines = [
