@@ -26,7 +26,8 @@
         },
         "build": {
             "sub_component": [
-                "//third_party/libphonenumber/cpp:phonenumber_standard"
+                "//third_party/libphonenumber/cpp:phonenumber_standard",
+                "//third_party/libphonenumber/cpp:geocoding"
             ],
             "inner_kits": [],
             "test": [
