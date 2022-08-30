@@ -76,8 +76,8 @@ ohos_shared_library("phonenumber_standard") {
   configs = [ ":phonenumber_config" ]
   sources = phonenumber_source
   deps = [
-    "//third_party/abseil-cpp/absl/strings:absl_strings",
     "//third_party/abseil-cpp/absl/base:absl_base",
+    "//third_party/abseil-cpp/absl/strings:absl_strings",
     "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
     "//third_party/protobuf:protobuf_lite",
