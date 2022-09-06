@@ -102,10 +102,8 @@ ohos_shared_library("geocoding") {
     "src/phonenumbers/phonenumber.pb.h",
   ]
   deps = [
-    "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
     "//third_party/libphonenumber/cpp:phonenumber_standard",
-    "//third_party/protobuf:protobuf_lite",
   ]
   defines = [
     "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
