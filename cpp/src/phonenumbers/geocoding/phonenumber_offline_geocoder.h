@@ -115,11 +115,12 @@ class PhoneNumberOfflineGeocoder {
             int prefix_language_code_pairs_size,
             prefix_descriptions_getter get_prefix_descriptions);
 
-  const AreaCodeMap* GetPhonePrefixDescriptions(int prefix,
-      const string& language, const string& script, const string& region) const;
-
-  AreaCodeMaps::const_iterator LoadAreaCodeMapFromFile(
+  const AreaCodeMap* LoadAreaCodeMapFromFile(
       const string& filename) const;
+
+  const AreaCodeMap* GetPhonePrefixDescriptions(
+      int prefix, const string& language, const string& script,
+      const string& region) const;
 
   // Returns the customary display name in the given language for the given
   // region.

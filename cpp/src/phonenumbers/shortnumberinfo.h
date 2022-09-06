@@ -179,12 +179,12 @@ class ShortNumberInfo {
   const scoped_ptr<const MatcherApi> matcher_api_;
 
   // A mapping from a RegionCode to the PhoneMetadata for that region.
-  scoped_ptr<map<string, PhoneMetadata> >
+  scoped_ptr<std::map<string, PhoneMetadata> >
       region_to_short_metadata_map_;
 
   // In these countries, if extra digits are added to an emergency number, it no
   // longer connects to the emergency service.
-  scoped_ptr<set<string> >
+  scoped_ptr<std::set<string> >
       regions_where_emergency_numbers_must_be_exact_;
 
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForRegion(

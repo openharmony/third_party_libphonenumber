@@ -2519,7 +2519,6 @@
 1242369|Andros
 1242373|Grand Bahama
 1242374|Grand Bahama
-1242376|Grand Bahama
 1242377|New Providence
 124238|New Providence
 1242392|New Providence
@@ -3568,6 +3567,7 @@
 1262948|Kenosha, WI
 1262965|Dousman, WI
 1262970|Waukesha, WI
+1263|Montreal, QC
 1267|Pennsylvania
 1267292|Philadelphia, PA
 1267297|Philadelphia, PA
@@ -6585,6 +6585,7 @@
 1325944|San Angelo, TX
 1325947|San Angelo, TX
 1325949|San Angelo, TX
+1326|Ohio
 1330|Ohio
 1330220|Brunswick, OH
 1330225|Brunswick, OH
@@ -7189,6 +7190,9 @@
 1337991|Lafayette, LA
 1337993|Lafayette, LA
 1339|Massachusetts
+1340200|Chtamstths, VI
+1340203|Chtamstths, VI
+1340208|St. Croix, VI
 1340423|Chtamstths, VI
 134044|Chtamstths, VI
 1340725|Chtamstths, VI
@@ -7203,7 +7207,6 @@
 13457|Cayman Islands
 134580|Cayman Islands
 134581|Cayman Islands
-134582|Cayman Islands
 1345848|Cayman Islands
 134588|Cayman Islands
 1345914|Cayman Islands
@@ -7721,6 +7724,7 @@
 1364|Kentucky
 1365|Ontario
 1367|Quebec
+1368|Alberta
 1380|Ohio
 1385|Utah
 1386|Florida
@@ -10930,6 +10934,8 @@
 1443949|Annapolis, MD
 1443977|Baltimore, MD
 1445|Philadelphia
+1447|Illinois
+1448|Florida
 1450|Quebec
 1450218|Vaudreuil-Dorion, QC
 1450224|Prévost, QC
@@ -11098,6 +11104,8 @@
 1450991|Granby, QC
 1458|Oregon
 1463|Indiana
+1464|Illinois
+1468|Quebec
 1469|Texas
 1469232|Dallas, TX
 1469241|Plano, TX
@@ -11111,6 +11119,7 @@
 1469916|Dallas, TX
 1469952|McKinney, TX
 1470|Georgia
+1474|Saskatchewan
 1475|Connecticut
 1478|Georgia
 1478218|Perry, GA
@@ -14967,6 +14976,7 @@
 1571292|Manassas, VA
 1571379|Manassas, VA
 1571434|Sterling, VA
+1572|Oklahoma
 1573|Missouri
 1573204|Jackson, MO
 1573214|Columbia, MO
@@ -15347,6 +15357,8 @@
 1580938|Shattuck, OK
 1580994|Mooreland, OK
 1581|Quebec
+1582|Pennsylvania
+1584|Manitoba
 1585|New York
 1585218|Pittsford, NY
 1585223|Fairport, NY
@@ -18599,6 +18611,7 @@
 1651917|Saint Paul, MN
 1651923|Goodhue, MN
 1651999|Saint Paul, MN
+1656|Florida
 1657|California
 1659|Alabama
 1659200|Lincoln, AL
@@ -23092,6 +23105,7 @@
 1770995|Lawrenceville, GA
 1770997|Riverdale, GA
 1770998|Roswell, GA
+1771|Washington D.C.
 1772|Florida
 1772204|Port St. Lucie, FL
 1772219|Stuart, FL
@@ -25940,6 +25954,8 @@
 1832912|Houston, TX
 1832934|Magnolia, TX
 1838|New York
+1839|South Carolina
+1840|California
 1843|South Carolina
 1843207|North Charleston, SC
 1843208|Hardeeville, SC
@@ -26593,7 +26609,7 @@
 1850983|Milton, FL
 1850994|Milton, FL
 1850997|Monticello, FL
-1854|Ohio
+1854|South Carolina
 1856|New Jersey
 1856205|Vineland, NJ
 1856216|Cherry Hill, NJ
@@ -27393,7 +27409,7 @@
 1867|Northwest Territories/Nunavut/Yukon
 1867393|Whitehorse, YT
 1867456|Whitehorse, YT
-1867536|Watson Lake Hospital
+1867536|Watson Lake
 1867633|Whitehorse, YT
 1867645|Rankin Inlet, NU
 1867667|Whitehorse, YT
@@ -30626,7 +30642,9 @@
 194195|Sarasota, FL
 1941964|Boca Grande, FL
 1941979|Port Charlotte, FL
+1945|Texas
 1947|Michigan
+1948|Virginia
 1949|California
 1949221|Irvine, CA
 1949249|Laguna Niguel, CA
