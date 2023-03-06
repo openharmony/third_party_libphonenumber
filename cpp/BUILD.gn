@@ -43,6 +43,7 @@ config("phonenumber_config") {
     "-Wno-error=unused-const-variable",
     "-Wno-error=unneeded-internal-declaration",
     "-Wno-implicit-fallthrough",
+    "-Wno-deprecated-builtins",
   ]
 }
 
