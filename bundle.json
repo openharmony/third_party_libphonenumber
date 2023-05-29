@@ -20,7 +20,7 @@
         "deps": {
             "components": [],
             "third_party": [
-                "abseil-cpp",
+                "abseil_cpp",
                 "icu",
                 "protobuf"
             ]
