@@ -88,6 +88,7 @@ ohos_shared_library("phonenumber_standard") {
     "I18N_PHONENUMBERS_USE_ICU_REGEXP",
     "HAVE_PTHREAD",
   ]
+  innerapi_tags = [ "platformsdk_indirect" ]
   part_name = "libphonenumber"
   subsystem_name = "thirdparty"
   ldflags = [ "-shared" ]
