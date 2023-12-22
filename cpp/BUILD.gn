@@ -22,6 +22,7 @@ group("build_module") {
 config("phonenumber_config") {
   include_dirs = [
     "//third_party/abseil-cpp/abseil-cpp",
+    "//third_party/bounds_checking_function/include",
     "//third_party/icu/icu4c/source/common",
     "//third_party/icu/icu4c/source/i18n",
     "//third_party/icu/icu4c/source",
@@ -79,6 +80,7 @@ ohos_shared_library("phonenumber_standard") {
   deps = [
     "//third_party/abseil-cpp:absl_base",
     "//third_party/abseil-cpp:absl_strings",
+    "//third_party/bounds_checking_function:libsec_shared",
     "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
     "//third_party/protobuf:protobuf_lite",
@@ -107,6 +109,7 @@ ohos_shared_library("geocoding") {
     "src/phonenumbers/phonenumber.pb.h",
   ]
   deps = [
+    "//third_party/bounds_checking_function:libsec_shared",
     "//third_party/icu/icu4c:shared_icuuc",
     "//third_party/libphonenumber/cpp:phonenumber_standard",
   ]

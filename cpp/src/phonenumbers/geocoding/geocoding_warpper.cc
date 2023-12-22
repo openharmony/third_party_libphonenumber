@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <unicode/unistr.h>  // NOLINT(build/include_order)
 #include <unicode/locid.h>
+#include "securec.h"
 
 using icu::UnicodeString;
 using i18n::phonenumbers::PhoneNumber;
@@ -16,7 +17,7 @@ using i18n::phonenumbers::PhoneNumberUtil;
 using i18n::phonenumbers::PhoneNumberOfflineGeocoder;
 using icu::Locale;
 
-extern "C" void exposeLocationName(const char* pNumber, const char* locale, char* res) {
+extern "C" void exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength = 128) {
     if(offlineGeocoder == NULL) {
         offlineGeocoder = new PhoneNumberOfflineGeocoder();
     }
@@ -29,9 +30,10 @@ extern "C" void exposeLocationName(const char* pNumber, const char* locale, char
     PhoneNumberUtil::ErrorType type = util->Parse(number, uLocale.getCountry(), &phoneNumber);
     if (type != PhoneNumberUtil::ErrorType::NO_PARSING_ERROR) {
         std::string empty = "";
-        std::strcpy(res, empty.c_str());
+        strcpy_s(res, resLength, empty.c_str());
+        return;
     }
     std::string result = offlineGeocoder->GetDescriptionForNumber(phoneNumber, uLocale);
-    std::strcpy(res, result.c_str());
+    strcpy_s(res, resLength, result.c_str());
 }
 
