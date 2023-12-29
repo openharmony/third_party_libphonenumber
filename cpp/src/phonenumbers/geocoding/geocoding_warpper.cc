@@ -17,7 +17,7 @@ using i18n::phonenumbers::PhoneNumberUtil;
 using i18n::phonenumbers::PhoneNumberOfflineGeocoder;
 using icu::Locale;
 
-extern "C" void exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength = 128) {
+extern "C" int exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength = 128) {
     if(offlineGeocoder == NULL) {
         offlineGeocoder = new PhoneNumberOfflineGeocoder();
     }
@@ -30,10 +30,9 @@ extern "C" void exposeLocationName(const char* pNumber, const char* locale, char
     PhoneNumberUtil::ErrorType type = util->Parse(number, uLocale.getCountry(), &phoneNumber);
     if (type != PhoneNumberUtil::ErrorType::NO_PARSING_ERROR) {
         std::string empty = "";
-        strcpy_s(res, resLength, empty.c_str());
-        return;
+        return strcpy_s(res, resLength, empty.c_str());
     }
     std::string result = offlineGeocoder->GetDescriptionForNumber(phoneNumber, uLocale);
-    strcpy_s(res, resLength, result.c_str());
+    return strcpy_s(res, resLength, result.c_str());
 }
 
