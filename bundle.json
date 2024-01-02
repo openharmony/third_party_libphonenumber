@@ -21,6 +21,7 @@
             "components": [],
             "third_party": [
                 "abseil-cpp",
+                "bounds_checking_function",
                 "icu",
                 "protobuf"
             ]
