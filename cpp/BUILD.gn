@@ -48,6 +48,12 @@ config("phonenumber_config") {
   ]
 }
 
+config("phonenumber_public_config") {
+  include_dirs = [
+    "//third_party/libphonenumber/cpp/src",
+  ]
+}
+
 phonenumber_source = [
   "src/phonenumbers/phonenumber.cc",
   "src/phonenumbers/default_logger.cc",
@@ -76,6 +82,7 @@ phonenumber_source = [
 
 ohos_shared_library("phonenumber_standard") {
   configs = [ ":phonenumber_config" ]
+  public_configs = [ ":phonenumber_public_config" ]
   sources = phonenumber_source
   deps = [
     "//third_party/abseil-cpp:absl_base",
@@ -83,7 +90,9 @@ ohos_shared_library("phonenumber_standard") {
     "//third_party/bounds_checking_function:libsec_shared",
     "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
-    "//third_party/protobuf:protobuf_lite",
+  ]
+  public_external_deps = [
+    "protobuf:protobuf_lite",
   ]
   defines = [
     "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",

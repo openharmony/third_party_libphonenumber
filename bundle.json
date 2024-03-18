@@ -18,12 +18,13 @@
         "rom": "",
         "ram": "",
         "deps": {
-            "components": [],
+            "components": [
+                "protobuf"
+            ],
             "third_party": [
                 "abseil-cpp",
                 "bounds_checking_function",
-                "icu",
-                "protobuf"
+                "icu"
             ]
         },
         "build": {
@@ -31,7 +32,22 @@
                 "//third_party/libphonenumber/cpp:phonenumber_standard",
                 "//third_party/libphonenumber/cpp:geocoding"
             ],
-            "inner_kits": [],
+            "inner_kits": [
+                {
+                    "name": "//third_party/libphonenumber/cpp:phonenumber_standard",
+                    "header": {
+                        "header_files": [],
+                        "header_base": "//third_party/libphonenumber/cpp/src"
+                    }
+                },
+                {
+                    "name": "//third_party/libphonenumber/cpp:geocoding",
+                    "header": {
+                        "header_files": [],
+                        "header_base": "//third_party/libphonenumber/cpp/src"
+                    }
+                }
+            ],
             "test": [
                 "//third_party/libphonenumber/cpp/test:libphonenumber_test"
             ]
