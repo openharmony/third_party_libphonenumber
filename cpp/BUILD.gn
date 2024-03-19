@@ -49,9 +49,7 @@ config("phonenumber_config") {
 }
 
 config("phonenumber_public_config") {
-  include_dirs = [
-    "//third_party/libphonenumber/cpp/src",
-  ]
+  include_dirs = [ "//third_party/libphonenumber/cpp/src" ]
 }
 
 phonenumber_source = [
@@ -91,9 +89,7 @@ ohos_shared_library("phonenumber_standard") {
     "//third_party/icu/icu4c:shared_icui18n",
     "//third_party/icu/icu4c:shared_icuuc",
   ]
-  public_external_deps = [
-    "protobuf:protobuf_lite",
-  ]
+  public_external_deps = [ "protobuf:protobuf_lite" ]
   defines = [
     "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
     "I18N_PHONENUMBERS_USE_ICU_REGEXP",
