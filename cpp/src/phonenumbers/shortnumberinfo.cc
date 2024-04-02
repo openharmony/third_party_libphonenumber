@@ -45,8 +45,8 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
 ShortNumberInfo::ShortNumberInfo()
     : phone_util_(*PhoneNumberUtil::GetInstance()),
       matcher_api_(new RegexBasedMatcher()),
-      region_to_short_metadata_map_(new absl::flat_hash_map<string, PhoneMetadata>()),
-      regions_where_emergency_numbers_must_be_exact_(new absl::flat_hash_set<string>()) {
+      region_to_short_metadata_map_(new std::map<string, PhoneMetadata>()),
+      regions_where_emergency_numbers_must_be_exact_(new std::set<string>()) {
   PhoneMetadataCollection metadata_collection;
   if (!LoadCompiledInMetadata(&metadata_collection)) {
     LOG(DFATAL) << "Could not parse compiled-in metadata.";
