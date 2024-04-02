@@ -16,13 +16,61 @@
 
 #include "phonenumbers/geocoding/geocoding_test_data.h"
 
-#include "phonenumbers/base/basictypes.h"
+#include <cstdint>
 
 namespace i18n {
 namespace phonenumbers {
 namespace {
 
-const int32 prefix_1_de_prefixes[] = {
+const int32_t prefix_82_ko_prefixes[] = {
+  822,
+  8231,
+  8232,
+  8233,
+  8241,
+  8242,
+  8243,
+  8251,
+  8252,
+  8253,
+  8254,
+  8255,
+  8261,
+  8262,
+  8263,
+};
+
+const char* prefix_82_ko_descriptions[] = {
+  "\xec""\x84""\x9c""\xec""\x9a""\xb8",
+  "\xea""\xb2""\xbd""\xea""\xb8""\xb0",
+  "\xec""\x9d""\xb8""\xec""\xb2""\x9c",
+  "\xea""\xb0""\x95""\xec""\x9b""\x90",
+  "\xec""\xb6""\xa9""\xeb""\x82""\xa8",
+  "\xeb""\x8c""\x80""\xec""\xa0""\x84",
+  "\xec""\xb6""\xa9""\xeb""\xb6""\x81",
+  "\xeb""\xb6""\x80""\xec""\x82""\xb0",
+  "\xec""\x9a""\xb8""\xec""\x82""\xb0",
+  "\xeb""\x8c""\x80""\xea""\xb5""\xac",
+  "\xea""\xb2""\xbd""\xeb""\xb6""\x81",
+  "\xea""\xb2""\xbd""\xeb""\x82""\xa8",
+  "\xec""\xa0""\x84""\xeb""\x82""\xa8",
+  "\xea""\xb4""\x91""\xec""\xa3""\xbc",
+  "\xec""\xa0""\x84""\xeb""\xb6""\x81",
+};
+
+const int32_t prefix_82_ko_possible_lengths[] = {
+  3, 4,
+};
+
+const PrefixDescriptions prefix_82_ko = {
+  prefix_82_ko_prefixes,
+  sizeof(prefix_82_ko_prefixes)/sizeof(*prefix_82_ko_prefixes),
+  prefix_82_ko_descriptions,
+  prefix_82_ko_possible_lengths,
+  sizeof(prefix_82_ko_possible_lengths)/sizeof(*prefix_82_ko_possible_lengths),
+};
+
+const int32_t prefix_1_de_prefixes[] = {
   1201,
   1650,
 };
@@ -32,7 +80,7 @@ const char* prefix_1_de_descriptions[] = {
   "Kalifornien",
 };
 
-const int32 prefix_1_de_possible_lengths[] = {
+const int32_t prefix_1_de_possible_lengths[] = {
   4,
 };
 
@@ -44,59 +92,7 @@ const PrefixDescriptions prefix_1_de = {
   sizeof(prefix_1_de_possible_lengths)/sizeof(*prefix_1_de_possible_lengths),
 };
 
-const int32 prefix_1_en_prefixes[] = {
-  1201,
-  1212,
-  1650,
-  1989,
-  1212812,
-  1617423,
-  1650960,
-};
-
-const char* prefix_1_en_descriptions[] = {
-  "NJ",
-  "NY",
-  "CA",
-  "MA",
-  "New York, NY",
-  "Boston, MA",
-  "Mountain View, CA",
-};
-
-const int32 prefix_1_en_possible_lengths[] = {
-  4, 7,
-};
-
-const PrefixDescriptions prefix_1_en = {
-  prefix_1_en_prefixes,
-  sizeof(prefix_1_en_prefixes)/sizeof(*prefix_1_en_prefixes),
-  prefix_1_en_descriptions,
-  prefix_1_en_possible_lengths,
-  sizeof(prefix_1_en_possible_lengths)/sizeof(*prefix_1_en_possible_lengths),
-};
-
-const int32 prefix_54_en_prefixes[] = {
-  542214,
-};
-
-const char* prefix_54_en_descriptions[] = {
-  "La Plata",
-};
-
-const int32 prefix_54_en_possible_lengths[] = {
-  6,
-};
-
-const PrefixDescriptions prefix_54_en = {
-  prefix_54_en_prefixes,
-  sizeof(prefix_54_en_prefixes)/sizeof(*prefix_54_en_prefixes),
-  prefix_54_en_descriptions,
-  prefix_54_en_possible_lengths,
-  sizeof(prefix_54_en_possible_lengths)/sizeof(*prefix_54_en_possible_lengths),
-};
-
-const int32 prefix_82_en_prefixes[] = {
+const int32_t prefix_82_en_prefixes[] = {
   822,
   8210,
   8231,
@@ -136,7 +132,7 @@ const char* prefix_82_en_descriptions[] = {
   "Jeju",
 };
 
-const int32 prefix_82_en_possible_lengths[] = {
+const int32_t prefix_82_en_possible_lengths[] = {
   3, 4,
 };
 
@@ -148,52 +144,56 @@ const PrefixDescriptions prefix_82_en = {
   sizeof(prefix_82_en_possible_lengths)/sizeof(*prefix_82_en_possible_lengths),
 };
 
-const int32 prefix_82_ko_prefixes[] = {
-  822,
-  8231,
-  8232,
-  8233,
-  8241,
-  8242,
-  8243,
-  8251,
-  8252,
-  8253,
-  8254,
-  8255,
-  8261,
-  8262,
-  8263,
+const int32_t prefix_54_en_prefixes[] = {
+  542214,
 };
 
-const char* prefix_82_ko_descriptions[] = {
-  "\xec""\x84""\x9c""\xec""\x9a""\xb8",
-  "\xea""\xb2""\xbd""\xea""\xb8""\xb0",
-  "\xec""\x9d""\xb8""\xec""\xb2""\x9c",
-  "\xea""\xb0""\x95""\xec""\x9b""\x90",
-  "\xec""\xb6""\xa9""\xeb""\x82""\xa8",
-  "\xeb""\x8c""\x80""\xec""\xa0""\x84",
-  "\xec""\xb6""\xa9""\xeb""\xb6""\x81",
-  "\xeb""\xb6""\x80""\xec""\x82""\xb0",
-  "\xec""\x9a""\xb8""\xec""\x82""\xb0",
-  "\xeb""\x8c""\x80""\xea""\xb5""\xac",
-  "\xea""\xb2""\xbd""\xeb""\xb6""\x81",
-  "\xea""\xb2""\xbd""\xeb""\x82""\xa8",
-  "\xec""\xa0""\x84""\xeb""\x82""\xa8",
-  "\xea""\xb4""\x91""\xec""\xa3""\xbc",
-  "\xec""\xa0""\x84""\xeb""\xb6""\x81",
+const char* prefix_54_en_descriptions[] = {
+  "La Plata",
 };
 
-const int32 prefix_82_ko_possible_lengths[] = {
-  3, 4,
+const int32_t prefix_54_en_possible_lengths[] = {
+  6,
 };
 
-const PrefixDescriptions prefix_82_ko = {
-  prefix_82_ko_prefixes,
-  sizeof(prefix_82_ko_prefixes)/sizeof(*prefix_82_ko_prefixes),
-  prefix_82_ko_descriptions,
-  prefix_82_ko_possible_lengths,
-  sizeof(prefix_82_ko_possible_lengths)/sizeof(*prefix_82_ko_possible_lengths),
+const PrefixDescriptions prefix_54_en = {
+  prefix_54_en_prefixes,
+  sizeof(prefix_54_en_prefixes)/sizeof(*prefix_54_en_prefixes),
+  prefix_54_en_descriptions,
+  prefix_54_en_possible_lengths,
+  sizeof(prefix_54_en_possible_lengths)/sizeof(*prefix_54_en_possible_lengths),
+};
+
+const int32_t prefix_1_en_prefixes[] = {
+  1201,
+  1212,
+  1650,
+  1989,
+  1212812,
+  1617423,
+  1650960,
+};
+
+const char* prefix_1_en_descriptions[] = {
+  "NJ",
+  "NY",
+  "CA",
+  "MA",
+  "New York, NY",
+  "Boston, MA",
+  "Mountain View, CA",
+};
+
+const int32_t prefix_1_en_possible_lengths[] = {
+  4, 7,
+};
+
+const PrefixDescriptions prefix_1_en = {
+  prefix_1_en_prefixes,
+  sizeof(prefix_1_en_prefixes)/sizeof(*prefix_1_en_prefixes),
+  prefix_1_en_descriptions,
+  prefix_1_en_possible_lengths,
+  sizeof(prefix_1_en_possible_lengths)/sizeof(*prefix_1_en_possible_lengths),
 };
 
 const char* prefix_language_code_pairs[] = {
