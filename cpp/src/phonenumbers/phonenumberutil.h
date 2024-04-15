@@ -30,9 +30,6 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
-#include "absl/container/node_hash_set.h"
-#include "absl/container/node_hash_map.h"
-
 class TelephoneNumber;
 
 namespace i18n {
