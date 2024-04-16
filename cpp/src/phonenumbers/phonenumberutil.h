@@ -959,13 +959,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool check_region,
                         PhoneNumber* phone_number) const;
 
-  absl::optional<string> ExtractPhoneContext(
-      const string& number_to_extract_from,
-      size_t index_of_phone_context) const;
-
-  bool IsPhoneContextValid(absl::optional<string> phone_context) const;
-
-  ErrorType BuildNationalNumberForParsing(const string& number_to_parse,
+  void BuildNationalNumberForParsing(const string& number_to_parse,
                                           string* national_number) const;
 
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
