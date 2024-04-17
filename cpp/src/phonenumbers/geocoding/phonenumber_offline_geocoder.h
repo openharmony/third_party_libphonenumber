@@ -60,6 +60,11 @@ class PhoneNumberOfflineGeocoder {
       int prefix_language_code_pairs_size,
       prefix_descriptions_getter get_prefix_descriptions);
 
+  // This type is neither copyable nor movable.
+  PhoneNumberOfflineGeocoder(const PhoneNumberOfflineGeocoder&) = delete;
+  PhoneNumberOfflineGeocoder& operator=(const PhoneNumberOfflineGeocoder&) =
+      delete;
+
   virtual ~PhoneNumberOfflineGeocoder();
 
   // Returns a text description for the given phone number, in the language
@@ -162,8 +167,6 @@ class PhoneNumberOfflineGeocoder {
   // A mapping from country calling codes languages pairs to the corresponding
   // phone prefix map that has been loaded.
   mutable AreaCodeMaps available_maps_;
-
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberOfflineGeocoder);
 };
 
 }  // namespace phonenumbers

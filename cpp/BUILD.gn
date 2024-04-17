@@ -124,6 +124,7 @@ ohos_shared_library("geocoding") {
     "HAVE_PTHREAD",
   ]
   part_name = "libphonenumber"
+  relative_install_dir = "platformsdk"
   subsystem_name = "thirdparty"
   ldflags = [ "-shared" ]
   install_enable = true

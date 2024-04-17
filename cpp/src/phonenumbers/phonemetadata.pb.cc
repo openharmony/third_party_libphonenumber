@@ -962,11 +962,8 @@ class PhoneMetadata::_Internal {
   static void set_has_leading_digits(HasBits* has_bits) {
     (*has_bits)[0] |= 128u;
   }
-  static void set_has_leading_zero_possible(HasBits* has_bits) {
-    (*has_bits)[0] |= 268435456u;
-  }
   static void set_has_mobile_number_portable_region(HasBits* has_bits) {
-    (*has_bits)[0] |= 536870912u;
+    (*has_bits)[0] |= 268435456u;
   }
   static bool MissingRequiredFields(const HasBits& has_bits) {
     return ((has_bits[0] & 0x00000001) ^ 0x00000001) != 0;
@@ -1358,7 +1355,7 @@ void PhoneMetadata::Clear() {
     GOOGLE_DCHECK(sms_services_ != nullptr);
     sms_services_->Clear();
   }
-  if (cached_has_bits & 0x3e000000u) {
+  if (cached_has_bits & 0x1e000000u) {
     ::memset(&country_code_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&mobile_number_portable_region_) -
         reinterpret_cast<char*>(&country_code_)) + sizeof(mobile_number_portable_region_));
@@ -1562,14 +1559,6 @@ const char* PhoneMetadata::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
       case 25:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 202)) {
           ptr = ctx->ParseMessage(_internal_mutable_uan(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // optional bool leading_zero_possible = 26 [default = false];
-      case 26:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 208)) {
-          _Internal::set_has_leading_zero_possible(&has_bits);
-          leading_zero_possible_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1823,12 +1812,6 @@ failure:
         25, _Internal::uan(this), target, stream);
   }
 
-  // optional bool leading_zero_possible = 26 [default = false];
-  if (cached_has_bits & 0x10000000u) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(26, this->_internal_leading_zero_possible(), target);
-  }
-
   // optional .i18n.phonenumbers.PhoneNumberDesc emergency = 27;
   if (cached_has_bits & 0x00080000u) {
     target = stream->EnsureSpace(target);
@@ -1870,7 +1853,7 @@ failure:
   }
 
   // optional bool mobile_number_portable_region = 32 [default = false];
-  if (cached_has_bits & 0x20000000u) {
+  if (cached_has_bits & 0x10000000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(32, this->_internal_mobile_number_portable_region(), target);
   }
@@ -2087,7 +2070,7 @@ size_t PhoneMetadata::ByteSizeLong() const {
     }
 
   }
-  if (cached_has_bits & 0x3f000000u) {
+  if (cached_has_bits & 0x1f000000u) {
     // optional .i18n.phonenumbers.PhoneNumberDesc sms_services = 33;
     if (cached_has_bits & 0x01000000u) {
       total_size += 2 +
@@ -2112,13 +2095,8 @@ size_t PhoneMetadata::ByteSizeLong() const {
       total_size += 2 + 1;
     }
 
-    // optional bool leading_zero_possible = 26 [default = false];
-    if (cached_has_bits & 0x10000000u) {
-      total_size += 2 + 1;
-    }
-
     // optional bool mobile_number_portable_region = 32 [default = false];
-    if (cached_has_bits & 0x20000000u) {
+    if (cached_has_bits & 0x10000000u) {
       total_size += 2 + 1;
     }
 
@@ -2225,7 +2203,7 @@ void PhoneMetadata::MergeFrom(const PhoneMetadata& from) {
       _internal_mutable_carrier_specific()->::i18n::phonenumbers::PhoneNumberDesc::MergeFrom(from._internal_carrier_specific());
     }
   }
-  if (cached_has_bits & 0x3f000000u) {
+  if (cached_has_bits & 0x1f000000u) {
     if (cached_has_bits & 0x01000000u) {
       _internal_mutable_sms_services()->::i18n::phonenumbers::PhoneNumberDesc::MergeFrom(from._internal_sms_services());
     }
@@ -2239,9 +2217,6 @@ void PhoneMetadata::MergeFrom(const PhoneMetadata& from) {
       main_country_for_code_ = from.main_country_for_code_;
     }
     if (cached_has_bits & 0x10000000u) {
-      leading_zero_possible_ = from.leading_zero_possible_;
-    }
-    if (cached_has_bits & 0x20000000u) {
       mobile_number_portable_region_ = from.mobile_number_portable_region_;
     }
     _has_bits_[0] |= cached_has_bits;

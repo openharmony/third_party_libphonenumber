@@ -88,10 +88,6 @@ const char PhoneNumberUtil::kRegionCodeForNonGeoEntity[] = "001";
 
 namespace {
 
-// The prefix that needs to be inserted in front of a Colombian landline
-// number when dialed from a mobile phone in Colombia.
-const char kColombiaMobileToFixedLinePrefix[] = "3";
-
 // The kPlusSign signifies the international prefix.
 const char kPlusSign[] = "+";
 
@@ -101,11 +97,13 @@ const char kRfc3966ExtnPrefix[] = ";ext=";
 const char kRfc3966Prefix[] = "tel:";
 const char kRfc3966PhoneContext[] = ";phone-context=";
 const char kRfc3966IsdnSubaddress[] = ";isub=";
+const char kRfc3966VisualSeparator[] = "[\\-\\.\\(\\)]?";
 
 const char kDigits[] = "\\p{Nd}";
 // We accept alpha characters in phone numbers, ASCII only. We store lower-case
 // here only since our regular expressions are case-insensitive.
 const char kValidAlpha[] = "a-z";
+const char kValidAlphaInclUppercase[] = "A-Za-z";
 
 // Default extension prefix to use when formatting. This will be put in front of
 // any extension component of the number, after the main national number is
@@ -658,6 +656,13 @@ class PhoneNumberRegExpsAndMappings {
   // indicators. When matching, these are hardly ever used to indicate this.
   const string extn_patterns_for_parsing_;
 
+  // Regular expressions of different parts of the phone-context parameter,
+  // following the syntax defined in RFC3966.
+  const std::string rfc3966_phone_digit_;
+  const std::string alphanum_;
+  const std::string rfc3966_domainlabel_;
+  const std::string rfc3966_toplabel_;
+
  public:
   scoped_ptr<const AbstractRegExpFactory> regexp_factory_;
   scoped_ptr<RegExpCache> regexp_cache_;
@@ -760,6 +765,14 @@ class PhoneNumberRegExpsAndMappings {
 
   scoped_ptr<const RegExp> plus_chars_pattern_;
 
+  // Regular expression of valid global-number-digits for the phone-context
+  // parameter, following the syntax defined in RFC3966.
+  std::unique_ptr<const RegExp> rfc3966_global_number_digits_pattern_;
+
+  // Regular expression of valid domainname for the phone-context parameter,
+  // following the syntax defined in RFC3966.
+  std::unique_ptr<const RegExp> rfc3966_domainname_pattern_;
+
   PhoneNumberRegExpsAndMappings()
       : valid_phone_number_(
             StrCat(kDigits, "{", PhoneNumberUtil::kMinLengthForNsn, "}|[",
@@ -768,6 +781,13 @@ class PhoneNumberRegExpsAndMappings {
                    kDigits, "){3,}[", PhoneNumberUtil::kValidPunctuation,
                    kStarSign, kValidAlpha, kDigits, "]*")),
         extn_patterns_for_parsing_(CreateExtnPattern(/* for_parsing= */ true)),
+        rfc3966_phone_digit_(
+            StrCat("(", kDigits, "|", kRfc3966VisualSeparator, ")")),
+        alphanum_(StrCat(kValidAlphaInclUppercase, kDigits)),
+        rfc3966_domainlabel_(
+            StrCat("[", alphanum_, "]+((\\-)*[", alphanum_, "])*")),
+        rfc3966_toplabel_(StrCat("[", kValidAlphaInclUppercase,
+                                 "]+((\\-)*[", alphanum_, "])*")),
         regexp_factory_(new RegExpFactory()),
         regexp_cache_(new RegExpCache(*regexp_factory_.get(), 128)),
         diallable_char_mappings_(),
@@ -813,12 +833,19 @@ class PhoneNumberRegExpsAndMappings {
             regexp_factory_->CreateRegExp("(\\$\\d)")),
         carrier_code_pattern_(regexp_factory_->CreateRegExp("\\$CC")),
         plus_chars_pattern_(regexp_factory_->CreateRegExp(
-            StrCat("[", PhoneNumberUtil::kPlusChars, "]+"))) {
+            StrCat("[", PhoneNumberUtil::kPlusChars, "]+"))),
+        rfc3966_global_number_digits_pattern_(regexp_factory_->CreateRegExp(
+            StrCat("^\\", kPlusSign, rfc3966_phone_digit_, "*", kDigits,
+                   rfc3966_phone_digit_, "*$"))),
+        rfc3966_domainname_pattern_(regexp_factory_->CreateRegExp(StrCat(
+            "^(", rfc3966_domainlabel_, "\\.)*", rfc3966_toplabel_, "\\.?$"))) {
     InitializeMapsAndSets();
   }
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberRegExpsAndMappings);
+ // This type is neither copyable nor movable.
+  PhoneNumberRegExpsAndMappings(const PhoneNumberRegExpsAndMappings&) = delete;
+  PhoneNumberRegExpsAndMappings& operator=(
+      const PhoneNumberRegExpsAndMappings&) = delete;
 };
 
 // Private constructor. Also takes care of initialisation.
@@ -1269,11 +1296,7 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
         (number_type == FIXED_LINE) || (number_type == MOBILE) ||
         (number_type == FIXED_LINE_OR_MOBILE);
     // Carrier codes may be needed in some countries. We handle this here.
-    if ((region_code == "CO") && (number_type == FIXED_LINE)) {
-      FormatNationalNumberWithCarrierCode(
-          number_no_extension, kColombiaMobileToFixedLinePrefix,
-          formatted_number);
-    } else if ((region_code == "BR") && (is_fixed_line_or_mobile)) {
+    if ((region_code == "BR") && (is_fixed_line_or_mobile)) {
       // Historically, we set this to an empty string when parsing with raw
       // input if none was found in the input string. However, this doesn't
       // result in a number we can dial. For this reason, we treat the empty

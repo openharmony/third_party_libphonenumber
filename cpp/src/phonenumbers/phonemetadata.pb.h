@@ -81,7 +81,7 @@ namespace phonenumbers {
 class NumberFormat PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:i18n.phonenumbers.NumberFormat) */ {
  public:
-  inline NumberFormat() : NumberFormat(nullptr) {}
+  inline NumberFormat() : NumberFormat(nullptr) {};
   virtual ~NumberFormat();
 
   NumberFormat(const NumberFormat& from);
@@ -228,6 +228,15 @@ class NumberFormat PROTOBUF_FINAL :
   std::string* mutable_pattern();
   std::string* release_pattern();
   void set_allocated_pattern(std::string* pattern);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_pattern();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_pattern(
+      std::string* pattern);
   private:
   const std::string& _internal_pattern() const;
   void _internal_set_pattern(const std::string& value);
@@ -248,6 +257,15 @@ class NumberFormat PROTOBUF_FINAL :
   std::string* mutable_format();
   std::string* release_format();
   void set_allocated_format(std::string* format);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_format();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_format(
+      std::string* format);
   private:
   const std::string& _internal_format() const;
   void _internal_set_format(const std::string& value);
@@ -268,6 +286,15 @@ class NumberFormat PROTOBUF_FINAL :
   std::string* mutable_national_prefix_formatting_rule();
   std::string* release_national_prefix_formatting_rule();
   void set_allocated_national_prefix_formatting_rule(std::string* national_prefix_formatting_rule);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_national_prefix_formatting_rule();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_national_prefix_formatting_rule(
+      std::string* national_prefix_formatting_rule);
   private:
   const std::string& _internal_national_prefix_formatting_rule() const;
   void _internal_set_national_prefix_formatting_rule(const std::string& value);
@@ -288,6 +315,15 @@ class NumberFormat PROTOBUF_FINAL :
   std::string* mutable_domestic_carrier_code_formatting_rule();
   std::string* release_domestic_carrier_code_formatting_rule();
   void set_allocated_domestic_carrier_code_formatting_rule(std::string* domestic_carrier_code_formatting_rule);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_domestic_carrier_code_formatting_rule();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_domestic_carrier_code_formatting_rule(
+      std::string* domestic_carrier_code_formatting_rule);
   private:
   const std::string& _internal_domestic_carrier_code_formatting_rule() const;
   void _internal_set_domestic_carrier_code_formatting_rule(const std::string& value);
@@ -332,7 +368,7 @@ class NumberFormat PROTOBUF_FINAL :
 class PhoneNumberDesc PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:i18n.phonenumbers.PhoneNumberDesc) */ {
  public:
-  inline PhoneNumberDesc() : PhoneNumberDesc(nullptr) {}
+  inline PhoneNumberDesc() : PhoneNumberDesc(nullptr) {};
   virtual ~PhoneNumberDesc();
 
   PhoneNumberDesc(const PhoneNumberDesc& from);
@@ -497,6 +533,15 @@ class PhoneNumberDesc PROTOBUF_FINAL :
   std::string* mutable_national_number_pattern();
   std::string* release_national_number_pattern();
   void set_allocated_national_number_pattern(std::string* national_number_pattern);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_national_number_pattern();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_national_number_pattern(
+      std::string* national_number_pattern);
   private:
   const std::string& _internal_national_number_pattern() const;
   void _internal_set_national_number_pattern(const std::string& value);
@@ -517,6 +562,15 @@ class PhoneNumberDesc PROTOBUF_FINAL :
   std::string* mutable_example_number();
   std::string* release_example_number();
   void set_allocated_example_number(std::string* example_number);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_example_number();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_example_number(
+      std::string* example_number);
   private:
   const std::string& _internal_example_number() const;
   void _internal_set_example_number(const std::string& value);
@@ -543,7 +597,7 @@ class PhoneNumberDesc PROTOBUF_FINAL :
 class PhoneMetadata PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:i18n.phonenumbers.PhoneMetadata) */ {
  public:
-  inline PhoneMetadata() : PhoneMetadata(nullptr) {}
+  inline PhoneMetadata() : PhoneMetadata(nullptr) {};
   virtual ~PhoneMetadata();
 
   PhoneMetadata(const PhoneMetadata& from);
@@ -675,7 +729,6 @@ class PhoneMetadata PROTOBUF_FINAL :
     kCountryCodeFieldNumber = 10,
     kSameMobileAndFixedLinePatternFieldNumber = 18,
     kMainCountryForCodeFieldNumber = 22,
-    kLeadingZeroPossibleFieldNumber = 26,
     kMobileNumberPortableRegionFieldNumber = 32,
   };
   // repeated .i18n.phonenumbers.NumberFormat number_format = 19;
@@ -728,6 +781,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_id();
   std::string* release_id();
   void set_allocated_id(std::string* id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_id(
+      std::string* id);
   private:
   const std::string& _internal_id() const;
   void _internal_set_id(const std::string& value);
@@ -748,6 +810,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_international_prefix();
   std::string* release_international_prefix();
   void set_allocated_international_prefix(std::string* international_prefix);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_international_prefix();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_international_prefix(
+      std::string* international_prefix);
   private:
   const std::string& _internal_international_prefix() const;
   void _internal_set_international_prefix(const std::string& value);
@@ -768,6 +839,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_national_prefix();
   std::string* release_national_prefix();
   void set_allocated_national_prefix(std::string* national_prefix);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_national_prefix();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_national_prefix(
+      std::string* national_prefix);
   private:
   const std::string& _internal_national_prefix() const;
   void _internal_set_national_prefix(const std::string& value);
@@ -788,6 +868,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_preferred_extn_prefix();
   std::string* release_preferred_extn_prefix();
   void set_allocated_preferred_extn_prefix(std::string* preferred_extn_prefix);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_preferred_extn_prefix();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_preferred_extn_prefix(
+      std::string* preferred_extn_prefix);
   private:
   const std::string& _internal_preferred_extn_prefix() const;
   void _internal_set_preferred_extn_prefix(const std::string& value);
@@ -808,6 +897,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_national_prefix_for_parsing();
   std::string* release_national_prefix_for_parsing();
   void set_allocated_national_prefix_for_parsing(std::string* national_prefix_for_parsing);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_national_prefix_for_parsing();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_national_prefix_for_parsing(
+      std::string* national_prefix_for_parsing);
   private:
   const std::string& _internal_national_prefix_for_parsing() const;
   void _internal_set_national_prefix_for_parsing(const std::string& value);
@@ -828,6 +926,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_national_prefix_transform_rule();
   std::string* release_national_prefix_transform_rule();
   void set_allocated_national_prefix_transform_rule(std::string* national_prefix_transform_rule);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_national_prefix_transform_rule();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_national_prefix_transform_rule(
+      std::string* national_prefix_transform_rule);
   private:
   const std::string& _internal_national_prefix_transform_rule() const;
   void _internal_set_national_prefix_transform_rule(const std::string& value);
@@ -848,6 +955,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_preferred_international_prefix();
   std::string* release_preferred_international_prefix();
   void set_allocated_preferred_international_prefix(std::string* preferred_international_prefix);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_preferred_international_prefix();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_preferred_international_prefix(
+      std::string* preferred_international_prefix);
   private:
   const std::string& _internal_preferred_international_prefix() const;
   void _internal_set_preferred_international_prefix(const std::string& value);
@@ -868,6 +984,15 @@ class PhoneMetadata PROTOBUF_FINAL :
   std::string* mutable_leading_digits();
   std::string* release_leading_digits();
   void set_allocated_leading_digits(std::string* leading_digits);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_leading_digits();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_leading_digits(
+      std::string* leading_digits);
   private:
   const std::string& _internal_leading_digits() const;
   void _internal_set_leading_digits(const std::string& value);
@@ -1219,19 +1344,6 @@ class PhoneMetadata PROTOBUF_FINAL :
   void _internal_set_main_country_for_code(bool value);
   public:
 
-  // optional bool leading_zero_possible = 26 [default = false];
-  bool has_leading_zero_possible() const;
-  private:
-  bool _internal_has_leading_zero_possible() const;
-  public:
-  void clear_leading_zero_possible();
-  bool leading_zero_possible() const;
-  void set_leading_zero_possible(bool value);
-  private:
-  bool _internal_leading_zero_possible() const;
-  void _internal_set_leading_zero_possible(bool value);
-  public:
-
   // optional bool mobile_number_portable_region = 32 [default = false];
   bool has_mobile_number_portable_region() const;
   private:
@@ -1284,7 +1396,6 @@ class PhoneMetadata PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::int32 country_code_;
   bool same_mobile_and_fixed_line_pattern_;
   bool main_country_for_code_;
-  bool leading_zero_possible_;
   bool mobile_number_portable_region_;
   friend struct ::TableStruct_phonemetadata_2eproto;
 };
@@ -1293,7 +1404,7 @@ class PhoneMetadata PROTOBUF_FINAL :
 class PhoneMetadataCollection PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:i18n.phonenumbers.PhoneMetadataCollection) */ {
  public:
-  inline PhoneMetadataCollection() : PhoneMetadataCollection(nullptr) {}
+  inline PhoneMetadataCollection() : PhoneMetadataCollection(nullptr) {};
   virtual ~PhoneMetadataCollection();
 
   PhoneMetadataCollection(const PhoneMetadataCollection& from);
@@ -1510,6 +1621,25 @@ inline void NumberFormat::set_allocated_pattern(std::string* pattern) {
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.NumberFormat.pattern)
 }
+inline std::string* NumberFormat::unsafe_arena_release_pattern() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.NumberFormat.pattern)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000001u;
+  return pattern_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void NumberFormat::unsafe_arena_set_allocated_pattern(
+    std::string* pattern) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (pattern != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  pattern_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      pattern, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.NumberFormat.pattern)
+}
 
 // required string format = 2;
 inline bool NumberFormat::_internal_has_format() const {
@@ -1583,6 +1713,25 @@ inline void NumberFormat::set_allocated_format(std::string* format) {
   format_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), format,
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.NumberFormat.format)
+}
+inline std::string* NumberFormat::unsafe_arena_release_format() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.NumberFormat.format)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000002u;
+  return format_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void NumberFormat::unsafe_arena_set_allocated_format(
+    std::string* format) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (format != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  format_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      format, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.NumberFormat.format)
 }
 
 // repeated string leading_digits_pattern = 3;
@@ -1732,6 +1881,25 @@ inline void NumberFormat::set_allocated_national_prefix_formatting_rule(std::str
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.NumberFormat.national_prefix_formatting_rule)
 }
+inline std::string* NumberFormat::unsafe_arena_release_national_prefix_formatting_rule() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.NumberFormat.national_prefix_formatting_rule)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000004u;
+  return national_prefix_formatting_rule_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void NumberFormat::unsafe_arena_set_allocated_national_prefix_formatting_rule(
+    std::string* national_prefix_formatting_rule) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (national_prefix_formatting_rule != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  national_prefix_formatting_rule_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      national_prefix_formatting_rule, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.NumberFormat.national_prefix_formatting_rule)
+}
 
 // optional bool national_prefix_optional_when_formatting = 6 [default = false];
 inline bool NumberFormat::_internal_has_national_prefix_optional_when_formatting() const {
@@ -1834,6 +2002,25 @@ inline void NumberFormat::set_allocated_domestic_carrier_code_formatting_rule(st
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.NumberFormat.domestic_carrier_code_formatting_rule)
 }
+inline std::string* NumberFormat::unsafe_arena_release_domestic_carrier_code_formatting_rule() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.NumberFormat.domestic_carrier_code_formatting_rule)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000008u;
+  return domestic_carrier_code_formatting_rule_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void NumberFormat::unsafe_arena_set_allocated_domestic_carrier_code_formatting_rule(
+    std::string* domestic_carrier_code_formatting_rule) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (domestic_carrier_code_formatting_rule != nullptr) {
+    _has_bits_[0] |= 0x00000008u;
+  } else {
+    _has_bits_[0] &= ~0x00000008u;
+  }
+  domestic_carrier_code_formatting_rule_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      domestic_carrier_code_formatting_rule, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.NumberFormat.domestic_carrier_code_formatting_rule)
+}
 
 // -------------------------------------------------------------------
 
@@ -1911,6 +2098,25 @@ inline void PhoneNumberDesc::set_allocated_national_number_pattern(std::string* 
   national_number_pattern_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), national_number_pattern,
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneNumberDesc.national_number_pattern)
+}
+inline std::string* PhoneNumberDesc::unsafe_arena_release_national_number_pattern() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneNumberDesc.national_number_pattern)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000001u;
+  return national_number_pattern_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneNumberDesc::unsafe_arena_set_allocated_national_number_pattern(
+    std::string* national_number_pattern) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (national_number_pattern != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  national_number_pattern_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      national_number_pattern, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneNumberDesc.national_number_pattern)
 }
 
 // repeated int32 possible_length = 9;
@@ -2080,6 +2286,25 @@ inline void PhoneNumberDesc::set_allocated_example_number(std::string* example_n
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneNumberDesc.example_number)
 }
+inline std::string* PhoneNumberDesc::unsafe_arena_release_example_number() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneNumberDesc.example_number)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000002u;
+  return example_number_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneNumberDesc::unsafe_arena_set_allocated_example_number(
+    std::string* example_number) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (example_number != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  example_number_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      example_number, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneNumberDesc.example_number)
+}
 
 // -------------------------------------------------------------------
 
@@ -2121,9 +2346,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_general_desc(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.general_desc)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_general_desc() {
-  _has_bits_[0] &= ~0x00000100u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = general_desc_;
-  general_desc_ = nullptr;
+  auto temp = unsafe_arena_release_general_desc();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2204,9 +2427,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_fixed_line(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.fixed_line)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_fixed_line() {
-  _has_bits_[0] &= ~0x00000200u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = fixed_line_;
-  fixed_line_ = nullptr;
+  auto temp = unsafe_arena_release_fixed_line();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2287,9 +2508,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_mobile(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.mobile)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_mobile() {
-  _has_bits_[0] &= ~0x00000400u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = mobile_;
-  mobile_ = nullptr;
+  auto temp = unsafe_arena_release_mobile();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2370,9 +2589,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_toll_free(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.toll_free)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_toll_free() {
-  _has_bits_[0] &= ~0x00000800u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = toll_free_;
-  toll_free_ = nullptr;
+  auto temp = unsafe_arena_release_toll_free();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2453,9 +2670,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_premium_rate(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.premium_rate)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_premium_rate() {
-  _has_bits_[0] &= ~0x00001000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = premium_rate_;
-  premium_rate_ = nullptr;
+  auto temp = unsafe_arena_release_premium_rate();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2536,9 +2751,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_shared_cost(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.shared_cost)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_shared_cost() {
-  _has_bits_[0] &= ~0x00002000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = shared_cost_;
-  shared_cost_ = nullptr;
+  auto temp = unsafe_arena_release_shared_cost();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2619,9 +2832,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_personal_number(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.personal_number)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_personal_number() {
-  _has_bits_[0] &= ~0x00004000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = personal_number_;
-  personal_number_ = nullptr;
+  auto temp = unsafe_arena_release_personal_number();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2702,9 +2913,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_voip(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.voip)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_voip() {
-  _has_bits_[0] &= ~0x00008000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = voip_;
-  voip_ = nullptr;
+  auto temp = unsafe_arena_release_voip();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2785,9 +2994,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_pager(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.pager)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_pager() {
-  _has_bits_[0] &= ~0x00010000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = pager_;
-  pager_ = nullptr;
+  auto temp = unsafe_arena_release_pager();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2868,9 +3075,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_uan(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.uan)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_uan() {
-  _has_bits_[0] &= ~0x00040000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = uan_;
-  uan_ = nullptr;
+  auto temp = unsafe_arena_release_uan();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -2951,9 +3156,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_emergency(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.emergency)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_emergency() {
-  _has_bits_[0] &= ~0x00080000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = emergency_;
-  emergency_ = nullptr;
+  auto temp = unsafe_arena_release_emergency();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -3034,9 +3237,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_voicemail(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.voicemail)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_voicemail() {
-  _has_bits_[0] &= ~0x00100000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = voicemail_;
-  voicemail_ = nullptr;
+  auto temp = unsafe_arena_release_voicemail();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -3117,9 +3318,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_short_code(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.short_code)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_short_code() {
-  _has_bits_[0] &= ~0x00200000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = short_code_;
-  short_code_ = nullptr;
+  auto temp = unsafe_arena_release_short_code();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -3200,9 +3399,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_standard_rate(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.standard_rate)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_standard_rate() {
-  _has_bits_[0] &= ~0x00400000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = standard_rate_;
-  standard_rate_ = nullptr;
+  auto temp = unsafe_arena_release_standard_rate();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -3283,9 +3480,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_carrier_specific(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.carrier_specific)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_carrier_specific() {
-  _has_bits_[0] &= ~0x00800000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = carrier_specific_;
-  carrier_specific_ = nullptr;
+  auto temp = unsafe_arena_release_carrier_specific();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -3366,9 +3561,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_sms_services(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.sms_services)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_sms_services() {
-  _has_bits_[0] &= ~0x01000000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = sms_services_;
-  sms_services_ = nullptr;
+  auto temp = unsafe_arena_release_sms_services();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -3449,9 +3642,7 @@ inline void PhoneMetadata::unsafe_arena_set_allocated_no_international_dialling(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.no_international_dialling)
 }
 inline ::i18n::phonenumbers::PhoneNumberDesc* PhoneMetadata::release_no_international_dialling() {
-  _has_bits_[0] &= ~0x00020000u;
-  ::i18n::phonenumbers::PhoneNumberDesc* temp = no_international_dialling_;
-  no_international_dialling_ = nullptr;
+  auto temp = unsafe_arena_release_no_international_dialling();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
@@ -3569,6 +3760,25 @@ inline void PhoneMetadata::set_allocated_id(std::string* id) {
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.id)
 }
+inline std::string* PhoneMetadata::unsafe_arena_release_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000001u;
+  return id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneMetadata::unsafe_arena_set_allocated_id(
+    std::string* id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (id != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.id)
+}
 
 // optional int32 country_code = 10;
 inline bool PhoneMetadata::_internal_has_country_code() const {
@@ -3671,6 +3881,25 @@ inline void PhoneMetadata::set_allocated_international_prefix(std::string* inter
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.international_prefix)
 }
+inline std::string* PhoneMetadata::unsafe_arena_release_international_prefix() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.international_prefix)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000002u;
+  return international_prefix_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneMetadata::unsafe_arena_set_allocated_international_prefix(
+    std::string* international_prefix) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (international_prefix != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  international_prefix_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      international_prefix, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.international_prefix)
+}
 
 // optional string preferred_international_prefix = 17;
 inline bool PhoneMetadata::_internal_has_preferred_international_prefix() const {
@@ -3744,6 +3973,25 @@ inline void PhoneMetadata::set_allocated_preferred_international_prefix(std::str
   preferred_international_prefix_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), preferred_international_prefix,
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.preferred_international_prefix)
+}
+inline std::string* PhoneMetadata::unsafe_arena_release_preferred_international_prefix() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.preferred_international_prefix)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000040u;
+  return preferred_international_prefix_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneMetadata::unsafe_arena_set_allocated_preferred_international_prefix(
+    std::string* preferred_international_prefix) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (preferred_international_prefix != nullptr) {
+    _has_bits_[0] |= 0x00000040u;
+  } else {
+    _has_bits_[0] &= ~0x00000040u;
+  }
+  preferred_international_prefix_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      preferred_international_prefix, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.preferred_international_prefix)
 }
 
 // optional string national_prefix = 12;
@@ -3819,6 +4067,25 @@ inline void PhoneMetadata::set_allocated_national_prefix(std::string* national_p
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.national_prefix)
 }
+inline std::string* PhoneMetadata::unsafe_arena_release_national_prefix() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.national_prefix)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000004u;
+  return national_prefix_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneMetadata::unsafe_arena_set_allocated_national_prefix(
+    std::string* national_prefix) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (national_prefix != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  national_prefix_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      national_prefix, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.national_prefix)
+}
 
 // optional string preferred_extn_prefix = 13;
 inline bool PhoneMetadata::_internal_has_preferred_extn_prefix() const {
@@ -3892,6 +4159,25 @@ inline void PhoneMetadata::set_allocated_preferred_extn_prefix(std::string* pref
   preferred_extn_prefix_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), preferred_extn_prefix,
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.preferred_extn_prefix)
+}
+inline std::string* PhoneMetadata::unsafe_arena_release_preferred_extn_prefix() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.preferred_extn_prefix)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000008u;
+  return preferred_extn_prefix_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneMetadata::unsafe_arena_set_allocated_preferred_extn_prefix(
+    std::string* preferred_extn_prefix) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (preferred_extn_prefix != nullptr) {
+    _has_bits_[0] |= 0x00000008u;
+  } else {
+    _has_bits_[0] &= ~0x00000008u;
+  }
+  preferred_extn_prefix_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      preferred_extn_prefix, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.preferred_extn_prefix)
 }
 
 // optional string national_prefix_for_parsing = 15;
@@ -3967,6 +4253,25 @@ inline void PhoneMetadata::set_allocated_national_prefix_for_parsing(std::string
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.national_prefix_for_parsing)
 }
+inline std::string* PhoneMetadata::unsafe_arena_release_national_prefix_for_parsing() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.national_prefix_for_parsing)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000010u;
+  return national_prefix_for_parsing_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneMetadata::unsafe_arena_set_allocated_national_prefix_for_parsing(
+    std::string* national_prefix_for_parsing) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (national_prefix_for_parsing != nullptr) {
+    _has_bits_[0] |= 0x00000010u;
+  } else {
+    _has_bits_[0] &= ~0x00000010u;
+  }
+  national_prefix_for_parsing_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      national_prefix_for_parsing, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.national_prefix_for_parsing)
+}
 
 // optional string national_prefix_transform_rule = 16;
 inline bool PhoneMetadata::_internal_has_national_prefix_transform_rule() const {
@@ -4040,6 +4345,25 @@ inline void PhoneMetadata::set_allocated_national_prefix_transform_rule(std::str
   national_prefix_transform_rule_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), national_prefix_transform_rule,
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.national_prefix_transform_rule)
+}
+inline std::string* PhoneMetadata::unsafe_arena_release_national_prefix_transform_rule() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.national_prefix_transform_rule)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000020u;
+  return national_prefix_transform_rule_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PhoneMetadata::unsafe_arena_set_allocated_national_prefix_transform_rule(
+    std::string* national_prefix_transform_rule) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (national_prefix_transform_rule != nullptr) {
+    _has_bits_[0] |= 0x00000020u;
+  } else {
+    _has_bits_[0] &= ~0x00000020u;
+  }
+  national_prefix_transform_rule_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      national_prefix_transform_rule, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.national_prefix_transform_rule)
 }
 
 // optional bool same_mobile_and_fixed_line_pattern = 18 [default = false];
@@ -4249,38 +4573,29 @@ inline void PhoneMetadata::set_allocated_leading_digits(std::string* leading_dig
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:i18n.phonenumbers.PhoneMetadata.leading_digits)
 }
-
-// optional bool leading_zero_possible = 26 [default = false];
-inline bool PhoneMetadata::_internal_has_leading_zero_possible() const {
-  bool value = (_has_bits_[0] & 0x10000000u) != 0;
-  return value;
+inline std::string* PhoneMetadata::unsafe_arena_release_leading_digits() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:i18n.phonenumbers.PhoneMetadata.leading_digits)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  _has_bits_[0] &= ~0x00000080u;
+  return leading_digits_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
 }
-inline bool PhoneMetadata::has_leading_zero_possible() const {
-  return _internal_has_leading_zero_possible();
-}
-inline void PhoneMetadata::clear_leading_zero_possible() {
-  leading_zero_possible_ = false;
-  _has_bits_[0] &= ~0x10000000u;
-}
-inline bool PhoneMetadata::_internal_leading_zero_possible() const {
-  return leading_zero_possible_;
-}
-inline bool PhoneMetadata::leading_zero_possible() const {
-  // @@protoc_insertion_point(field_get:i18n.phonenumbers.PhoneMetadata.leading_zero_possible)
-  return _internal_leading_zero_possible();
-}
-inline void PhoneMetadata::_internal_set_leading_zero_possible(bool value) {
-  _has_bits_[0] |= 0x10000000u;
-  leading_zero_possible_ = value;
-}
-inline void PhoneMetadata::set_leading_zero_possible(bool value) {
-  _internal_set_leading_zero_possible(value);
-  // @@protoc_insertion_point(field_set:i18n.phonenumbers.PhoneMetadata.leading_zero_possible)
+inline void PhoneMetadata::unsafe_arena_set_allocated_leading_digits(
+    std::string* leading_digits) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (leading_digits != nullptr) {
+    _has_bits_[0] |= 0x00000080u;
+  } else {
+    _has_bits_[0] &= ~0x00000080u;
+  }
+  leading_digits_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      leading_digits, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:i18n.phonenumbers.PhoneMetadata.leading_digits)
 }
 
 // optional bool mobile_number_portable_region = 32 [default = false];
 inline bool PhoneMetadata::_internal_has_mobile_number_portable_region() const {
-  bool value = (_has_bits_[0] & 0x20000000u) != 0;
+  bool value = (_has_bits_[0] & 0x10000000u) != 0;
   return value;
 }
 inline bool PhoneMetadata::has_mobile_number_portable_region() const {
@@ -4288,7 +4603,7 @@ inline bool PhoneMetadata::has_mobile_number_portable_region() const {
 }
 inline void PhoneMetadata::clear_mobile_number_portable_region() {
   mobile_number_portable_region_ = false;
-  _has_bits_[0] &= ~0x20000000u;
+  _has_bits_[0] &= ~0x10000000u;
 }
 inline bool PhoneMetadata::_internal_mobile_number_portable_region() const {
   return mobile_number_portable_region_;
@@ -4298,7 +4613,7 @@ inline bool PhoneMetadata::mobile_number_portable_region() const {
   return _internal_mobile_number_portable_region();
 }
 inline void PhoneMetadata::_internal_set_mobile_number_portable_region(bool value) {
-  _has_bits_[0] |= 0x20000000u;
+  _has_bits_[0] |= 0x10000000u;
   mobile_number_portable_region_ = value;
 }
 inline void PhoneMetadata::set_mobile_number_portable_region(bool value) {
