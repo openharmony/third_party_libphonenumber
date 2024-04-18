@@ -21,6 +21,8 @@
 
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/matcher_api.h"
+#include "phonenumbers/ohos/update_metadata.h"
+#include "phonenumbers/ohos/update_libphonenumber.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/regex_based_matcher.h"
@@ -59,6 +61,9 @@ ShortNumberInfo::ShortNumberInfo()
   regions_where_emergency_numbers_must_be_exact_->insert("BR");
   regions_where_emergency_numbers_must_be_exact_->insert("CL");
   regions_where_emergency_numbers_must_be_exact_->insert("NI");
+
+  UpdateLibphonenumber::LoadUpdateData();
+  UpdateMetadata::UpdateShortNumber(region_to_short_metadata_map_);
 }
 
 ShortNumberInfo::~ShortNumberInfo() {}

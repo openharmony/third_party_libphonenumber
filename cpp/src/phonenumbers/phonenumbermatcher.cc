@@ -43,6 +43,8 @@
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
 #include "phonenumbers/normalize_utf8.h"
+#include "phonenumbers/ohos/update_metadata.h"
+#include "phonenumbers/ohos/update_libphonenumber.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/phonenumbermatch.h"
@@ -377,6 +379,9 @@ class AlternateFormats : public Singleton<AlternateFormats> {
       calling_code_to_alternate_formats_map_.insert(
           std::make_pair(it->country_code(), &*it));
     }
+  
+    UpdateLibphonenumber::LoadUpdateData();
+    UpdateMetadata::UpdateAlternateFormat(calling_code_to_alternate_formats_map_);
   }
 
   const PhoneMetadata* GetAlternateFormatsForCountry(int country_calling_code)
