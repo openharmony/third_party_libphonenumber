@@ -66,10 +66,6 @@ phonenumber_source = [
   "src/phonenumbers/phonenumber.pb.cc",
   "src/phonenumbers/base/strings/string_piece.cc",
   "src/phonenumbers/alternate_format.cc",
-  "src/phonenumbers/ohos/geocoding_data.pb.cc",
-  "src/phonenumbers/ohos/update_geocoding.cc",
-  "src/phonenumbers/ohos/update_libphonenumber.cc",
-  "src/phonenumbers/ohos/update_metadata.cc",
   "src/phonenumbers/shortnumberinfo.cc",
   "src/phonenumbers/utf/unilib.cc",
   "src/phonenumbers/utf/unicodetext.cc",
@@ -82,24 +78,47 @@ phonenumber_source = [
   "src/phonenumbers/utf/rune.c",
 ]
 
+phonenumber_deps = [
+  "//third_party/abseil-cpp:absl_base",
+  "//third_party/abseil-cpp:absl_strings",
+  "//third_party/bounds_checking_function:libsec_shared",
+  "//third_party/icu/icu4c:shared_icui18n",
+  "//third_party/icu/icu4c:shared_icuuc",
+]
+
+phonenumber_defines = [
+  "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
+  "I18N_PHONENUMBERS_USE_ICU_REGEXP",
+  "HAVE_PTHREAD",
+]
+
+if (is_ohos) {
+  phonenumber_source += [
+    "src/phonenumbers/ohos/geocoding_data.pb.cc",
+    "src/phonenumbers/ohos/update_geocoding.cc",
+    "src/phonenumbers/ohos/update_libphonenumber.cc",
+    "src/phonenumbers/ohos/update_metadata.cc",
+  ]
+
+  phonenumber_deps += [ ":version_txt" ]
+
+  phonenumber_defines += [ "LIBPHONENUMBER_UPGRADE" ]
+
+  ohos_prebuilt_etc("version_txt") {
+    source = "./src/phonenumbers/ohos/etc/version.txt"
+    module_install_dir = "etc/LIBPHONENUMBER/generic/"
+    part_name = "libphonenumber"
+    subsystem_name = "thirdparty"
+  }
+}
+
 ohos_shared_library("phonenumber_standard") {
   configs = [ ":phonenumber_config" ]
   public_configs = [ ":phonenumber_public_config" ]
   sources = phonenumber_source
-  deps = [
-    ":version_txt",
-    "//third_party/abseil-cpp:absl_base",
-    "//third_party/abseil-cpp:absl_strings",
-    "//third_party/bounds_checking_function:libsec_shared",
-    "//third_party/icu/icu4c:shared_icui18n",
-    "//third_party/icu/icu4c:shared_icuuc",
-  ]
+  deps = phonenumber_deps
   public_external_deps = [ "protobuf:protobuf_lite" ]
-  defines = [
-    "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
-    "I18N_PHONENUMBERS_USE_ICU_REGEXP",
-    "HAVE_PTHREAD",
-  ]
+  defines = phonenumber_defines
   innerapi_tags = [ "platformsdk_indirect" ]
   part_name = "libphonenumber"
   subsystem_name = "thirdparty"
@@ -133,11 +152,4 @@ ohos_shared_library("geocoding") {
   subsystem_name = "thirdparty"
   ldflags = [ "-shared" ]
   install_enable = true
-}
-
-ohos_prebuilt_etc("version_txt") {
-  source = "./src/phonenumbers/ohos/etc/version.txt"
-  module_install_dir = "etc/LIBPHONENUMBER/generic/"
-  part_name = "libphonenumber"
-  subsystem_name = "thirdparty"
 }
