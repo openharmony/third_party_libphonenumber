@@ -34,8 +34,10 @@
 #include "phonenumbers/matcher_api.h"
 #include "phonenumbers/metadata.h"
 #include "phonenumbers/normalize_utf8.h"
+#ifdef LIBPHONENUMBER_UPGRADE
 #include "phonenumbers/ohos/update_metadata.h"
 #include "phonenumbers/ohos/update_libphonenumber.h"
+#endif
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
@@ -916,8 +918,10 @@ PhoneNumberUtil::PhoneNumberUtil()
   std::sort(country_calling_code_to_region_code_map_->begin(),
             country_calling_code_to_region_code_map_->end(), OrderByFirst());
 
+#ifdef LIBPHONENUMBER_UPGRADE
   UpdateLibphonenumber::LoadUpdateData();
   UpdateMetadata::UpdatePhoneNumber(country_code_to_non_geographical_metadata_map_, region_to_metadata_map_);
+#endif
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {
