@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include <dlfcn.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include "update_geocoding.h"
 #include "update_metadata.h"
@@ -21,32 +21,21 @@
 
 namespace i18n {
 namespace phonenumbers {
-const std::string UpdateLibphonenumber::LIBSO_NAME = "libi18n_sa_client.z.so";
-const std::string UpdateLibphonenumber::UPDATE_FUNCTION_NAME = "VerifyLibphonenumberUpdate";
-bool UpdateLibphonenumber::isLoad = false;
+const std::string UpdateLibphonenumber::METADATAINFO_PATH = "/system/etc/LIBPHONENUMBER/generic/MetadataInfo";
+const std::string UpdateLibphonenumber::GEOCODINGINFO_PATH = "/system/etc/LIBPHONENUMBER/generic/GeocodingInfo";
 
 void UpdateLibphonenumber::LoadUpdateData()
 {
-    if (isLoad) {
-        return;
+    int metadataFd = open(METADATAINFO_PATH.c_str(), O_RDONLY);
+    int geocodingFd = open(GEOCODINGINFO_PATH.c_str(), O_RDONLY);
+    UpdateMetadata::LoadUpdatedMetadata(metadataFd);
+    UpdateGeocoding::LoadGeocodingData(geocodingFd);
+    if (metadataFd != -1) {
+        close(metadataFd);
     }
-    void* handler = dlopen(LIBSO_NAME.c_str(), RTLD_NOW | RTLD_GLOBAL);    
-    if (handler == nullptr) {
-        return;
+    if (geocodingFd != -1) {
+        close(geocodingFd);
     }
-    GetUpdateFileDescriptor updateFunc = (GetUpdateFileDescriptor)dlsym(handler, UPDATE_FUNCTION_NAME.c_str());
-    int metadatafd = -1;
-    int geocodingfd = -1;
-    updateFunc(&metadatafd, &geocodingfd);
-    UpdateMetadata::LoadUpdatedMetadata(metadatafd);
-    UpdateGeocoding::LoadGeocodingData(geocodingfd);
-    if (metadatafd != -1) {
-        close(metadatafd);
-    }
-    if (geocodingfd != -1) {
-        close(geocodingfd);
-    }
-    isLoad = true;
 }
 }  // namespace phonenumbers
 }  // namespace i18n

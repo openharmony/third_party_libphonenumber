@@ -18,15 +18,13 @@
 
 namespace i18n {
 namespace phonenumbers {
-using GetUpdateFileDescriptor = void(*)(int*, int*);
 class UpdateLibphonenumber {
 public:
     static void LoadUpdateData();
 
 private:
-    static const std::string LIBSO_NAME;
-    static const std::string UPDATE_FUNCTION_NAME;
-    static bool isLoad;
+    static const std::string METADATAINFO_PATH;
+    static const std::string GEOCODINGINFO_PATH;
 };
 }  // namespace phonenumbers
 }  // namespace i18n
