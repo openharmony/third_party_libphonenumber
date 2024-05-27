@@ -21,8 +21,8 @@
 
 namespace i18n {
 namespace phonenumbers {
-const std::string UpdateLibphonenumber::METADATAINFO_PATH = "/system/etc/LIBPHONENUMBER/generic/MetadataInfo";
-const std::string UpdateLibphonenumber::GEOCODINGINFO_PATH = "/system/etc/LIBPHONENUMBER/generic/GeocodingInfo";
+const std::string UpdateLibphonenumber::METADATAINFO_PATH = "/system/etc/LIBPHONENUMBER/mount_dir/MetadataInfo";
+const std::string UpdateLibphonenumber::GEOCODINGINFO_PATH = "/system/etc/LIBPHONENUMBER/mount_dir/GeocodingInfo";
 
 void UpdateLibphonenumber::LoadUpdateData()
 {
