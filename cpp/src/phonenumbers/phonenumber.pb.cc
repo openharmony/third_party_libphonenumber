@@ -89,7 +89,7 @@ const std::string& PhoneNumber_CountryCodeSource_Name(
                      PhoneNumber_CountryCodeSource_strings[idx].get();
 }
 bool PhoneNumber_CountryCodeSource_Parse(
-    const std::string& name, PhoneNumber_CountryCodeSource* value) {
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, PhoneNumber_CountryCodeSource* value) {
   int int_value;
   bool success = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumValue(
       PhoneNumber_CountryCodeSource_entries, 5, name, &int_value);
