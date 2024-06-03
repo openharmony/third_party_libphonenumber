@@ -885,8 +885,7 @@ PhoneNumberUtil::PhoneNumberUtil()
 
     int country_calling_code = it->country_code();
     if (kRegionCodeForNonGeoEntity == region_code) {
-      country_code_to_non_geographical_metadata_map_->insert(
-          std::make_pair(country_calling_code, *it));
+      country_code_to_non_geographical_metadata_map_->insert(std::make_pair(country_calling_code, *it));
     } else {
       region_to_metadata_map_->insert(std::make_pair(region_code, *it));
     }
