@@ -35,7 +35,6 @@ config("phonenumber_test_config") {
     "-Wall",
     "-Werror",
     "-fPIC",
-    "-U__ANDROID__",
     "-Wno-sign-compare",
     "-Wno-error=unused-parameter",
     "-Wno-error=unused-const-variable",
