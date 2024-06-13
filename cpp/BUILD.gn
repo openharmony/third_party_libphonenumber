@@ -38,7 +38,6 @@ config("phonenumber_config") {
     "-Dphonenumber_shared_EXPORTS",
     "-Wall",
     "-fPIC",
-    "-U__ANDROID__",
     "-Wno-sign-compare",
     "-Wno-error=unused-parameter",
     "-Wno-error=unused-const-variable",
