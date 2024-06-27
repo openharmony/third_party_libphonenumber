@@ -91,6 +91,12 @@ phonenumber_defines = [
   "HAVE_PTHREAD",
 ]
 
+geocoding_defines = [
+  "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
+  "I18N_PHONENUMBERS_USE_ICU_REGEXP",
+  "HAVE_PTHREAD",
+]
+
 if (is_ohos) {
   phonenumber_source += [
     "src/phonenumbers/ohos/geocoding_data.pb.cc",
@@ -102,6 +108,8 @@ if (is_ohos) {
   phonenumber_deps += [ ":version_txt" ]
 
   phonenumber_defines += [ "LIBPHONENUMBER_UPGRADE" ]
+
+  geocoding_defines += [ "LIBPHONENUMBER_UPGRADE" ]
 
   ohos_prebuilt_etc("version_txt") {
     source = "./src/phonenumbers/ohos/etc/version.txt"
@@ -141,11 +149,7 @@ ohos_shared_library("geocoding") {
     "//third_party/icu/icu4c:shared_icuuc",
     "//third_party/libphonenumber/cpp:phonenumber_standard",
   ]
-  defines = [
-    "I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
-    "I18N_PHONENUMBERS_USE_ICU_REGEXP",
-    "HAVE_PTHREAD",
-  ]
+  defines = geocoding_defines
   part_name = "libphonenumber"
   relative_install_dir = "platformsdk"
   subsystem_name = "thirdparty"
