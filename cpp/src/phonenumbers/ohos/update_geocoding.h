@@ -68,7 +68,6 @@ private:
     static int preCountryCodesSize;
 
     static GeocodingInfo* geocodingInfo;
-    static const std::string GEOCODING_NAME;
 };
 }  // namespace phonenumbers
 }  // namespace i18n
