@@ -21,8 +21,6 @@
 
 namespace i18n {
 namespace phonenumbers {
-const std::string UpdateGeocoding::GEOCODING_NAME = "/system/etc/icu_tzdata/i18n/GeocodingInfo";
-
 GeocodingInfo* UpdateGeocoding::geocodingInfo = nullptr;
 
 std::map<std::string, PrefixDescriptions>* UpdateGeocoding::prefixDescriptionsMap = new std::map<std::string, PrefixDescriptions>();
