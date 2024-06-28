@@ -48,7 +48,10 @@ config("phonenumber_config") {
 }
 
 config("phonenumber_public_config") {
-  include_dirs = [ "//third_party/libphonenumber/cpp/src" ]
+  include_dirs = [ 
+      "//third_party/libphonenumber/cpp/src",
+      "//third_party/libphonenumber/cpp/src/phonenumbers"
+  ]
 }
 
 phonenumber_source = [
