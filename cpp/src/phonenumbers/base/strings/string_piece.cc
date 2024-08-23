@@ -35,6 +35,9 @@ void StringPiece::AppendToString(std::string* target) const {
 }
 
 size_type StringPiece::copy(char* buf, size_type n, size_type pos) const {
+  if (pos > length_)
+    return 0;
+
   size_type ret = std::min(length_ - pos, n);
   memcpy(buf, ptr_ + pos, ret);
   return ret;
