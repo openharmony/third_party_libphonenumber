@@ -123,6 +123,7 @@ if (is_ohos) {
 }
 
 ohos_shared_library("phonenumber_standard") {
+  branch_protector_ret = "pac_ret"
   configs = [ ":phonenumber_config" ]
   public_configs = [ ":phonenumber_public_config" ]
   sources = phonenumber_source
