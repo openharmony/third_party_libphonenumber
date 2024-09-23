@@ -59,9 +59,7 @@ ohos_unittest("libphonenumber_test") {
     "HAVE_PTHREAD",
   ]
 
-  deps = [
-    "//third_party/libphonenumber/cpp:phonenumber_standard",
-  ]
+  deps = [ "//third_party/libphonenumber/cpp:phonenumber_standard" ]
   external_deps = [
     "googletest:gtest",
     "icu:shared_icui18n",
