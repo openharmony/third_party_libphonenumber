@@ -47,42 +47,6 @@ ohos_unittest("libphonenumber_test") {
   module_out_path = module_output_path
 
   sources = [
-    "//third_party/googletest/googletest/src/gtest-death-test.cc",
-    "//third_party/googletest/googletest/src/gtest-filepath.cc",
-    "//third_party/googletest/googletest/src/gtest-internal-inl.h",
-    "//third_party/googletest/googletest/src/gtest-port.cc",
-    "//third_party/googletest/googletest/src/gtest-printers.cc",
-    "//third_party/googletest/googletest/src/gtest-test-part.cc",
-    "//third_party/googletest/googletest/src/gtest-typed-test.cc",
-    "//third_party/googletest/googletest/src/gtest.cc",
-    "//third_party/googletest/googletest/src/gtest_main.cc",
-    "//third_party/googletest/googletest/src/hwext/gtest-ext.cc",
-    "//third_party/googletest/googletest/src/hwext/gtest-filter.cc",
-    "//third_party/googletest/googletest/src/hwext/gtest-tag.cc",
-    "//third_party/googletest/googletest/src/hwext/gtest-utils.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/alternate_format.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/asyoutypeformatter.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/base/strings/string_piece.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/default_logger.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/logger.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/phonemetadata.pb.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/phonenumber.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/phonenumber.pb.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/phonenumbermatch.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/phonenumbermatcher.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/phonenumberutil.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/regex_based_matcher.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/regexp_adapter_icu.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/regexp_cache.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/short_metadata.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/shortnumberinfo.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/string_byte_sink.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/stringutil.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/test_metadata.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/unicodestring.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/utf/rune.c",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/utf/unicodetext.cc",
-    "//third_party/libphonenumber/cpp/src/phonenumbers/utf/unilib.cc",
     "phonenumbers/phonenumberutil_test.cc",
     "phonenumbers/test_util.cc",
   ]
@@ -96,12 +60,12 @@ ohos_unittest("libphonenumber_test") {
   ]
 
   deps = [
-    "//third_party/icu/icu4c:shared_icui18n",
-    "//third_party/icu/icu4c:shared_icuuc",
-    "//third_party/protobuf:protobuf_lite",
+    "//third_party/libphonenumber/cpp:phonenumber_standard",
   ]
-
   external_deps = [
-    "abseil-cpp:absl_strings",
+    "googletest:gtest",
+    "icu:shared_icui18n",
+    "icu:shared_icuuc",
+    "protobuf:protobuf_lite",
   ]
 }
