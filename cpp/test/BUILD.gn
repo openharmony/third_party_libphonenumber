@@ -100,4 +100,8 @@ ohos_unittest("libphonenumber_test") {
     "//third_party/icu/icu4c:shared_icuuc",
     "//third_party/protobuf:protobuf_lite",
   ]
+
+  external_deps = [
+    "abseil-cpp:absl_strings",
+  ]
 }
