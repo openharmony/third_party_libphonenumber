@@ -284,7 +284,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("$1-$2", metadata->number_format(1).format());
   EXPECT_EQ("[2-9]\\d{9}|3\\d{6}",
             metadata->general_desc().national_number_pattern());
-  EXPECT_EQ("(?:5056(?:[0-35-9]\d|4[468])|7302[0-3]\d)\d{4}|(?:472[24]|505[2-57-9]|7306|983[237-9])\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-57-9]|3[149]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-57-9]|1[02-9]|2[013569]|3[0-24679]|4[167]|5[6[01349]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|3[016]|4[0156]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-8]|3[1247]|4[037]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[068]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-389]|8[04-69]))[2-9]\d{6}",
+  EXPECT_EQ("(?:5056(?:[0-35-9]\\d|4[468])|7302[0-3]\\d)\d{4}|(?:472[24]|505[2-57-9]|7306|983[237-9])\\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-57-9]|3[149]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-57-9]|1[02-9]|2[013569]|3[0-24679]|4[167]|5[6[01349]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|3[016]|4[0156]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-8]|3[1247]|4[037]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[068]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-389]|8[04-69]))[2-9]\\d{6}",
             metadata->fixed_line().national_number_pattern());
   EXPECT_EQ(1, metadata->general_desc().possible_length_size());
   EXPECT_EQ(10, metadata->general_desc().possible_length(0));
@@ -306,7 +306,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
   ASSERT_EQ(18, metadata->number_format_size());
   EXPECT_EQ(1, metadata->number_format(5).leading_digits_pattern_size());
   EXPECT_EQ("181", metadata->number_format(5).leading_digits_pattern(0));
-  EXPECT_EQ("(\\d{3})(\\d{3,4})(\\d{4})",
+  EXPECT_EQ("(\\d{3})(\\d{5,11})",
             metadata->number_format(5).pattern());
   EXPECT_EQ(2, metadata->general_desc().possible_length_local_only_size());
   EXPECT_EQ(12, metadata->general_desc().possible_length_size());
@@ -315,11 +315,11 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadDEMetadata) {
   EXPECT_EQ(11, metadata->fixed_line().possible_length_size());
   EXPECT_EQ(2, metadata->mobile().possible_length_size());
   EXPECT_EQ("$1 $2", metadata->number_format(5).format());
-  EXPECT_EQ("32\d{9,11}|49[1-6]\d{10}|322\d{6}|49[0-7]\d{3,9}|(?:[34]0|[68]9)\d{3,13}|(?:2(?:0[1-689]|[1-3569]\d|4[0-8]|7[1-7]|8[0-7])|3(?:[3569]\d|4[0-79]|7[1-7]|8[1-8])|4(?:1[02-9]|[2-48]\d|5[0-6]|6[0-8]|7[0-79])|5(?:0[2-8]|[124-6]\d|[38][0-8]|[79][0-7])|6(?:0[02-9]|[1-358]\d|[47][0-8]|6[1-9])|7(?:0[2-8]|1[1-9]|[27][0-7]|3\d|[4-6][0-8]|8[0-5]|9[013-7])|8(?:0[2-9]|1[0-79]|2\d|3[0-46-9]|4[0-6]|5[013-9]|6[1-8]|7[0-8]|8[0-24-6])|9(?:0[6-9]|[1-4]\d|[589][0-7]|6[0-8]|7[0-467]))\d{3,12}",
+  EXPECT_EQ("32\\d{9,11}|49[1-6]\\d{10}|322\\d{6}|49[0-7]\\d{3,9}|(?:[34]0|[68]9)\\d{3,13}|(?:2(?:0[1-689]|[1-3569]\\d|4[0-8]|7[1-7]|8[0-7])|3(?:[3569]\\d|4[0-79]|7[1-7]|8[1-8])|4(?:1[02-9]|[2-48]\\d|5[0-6]|6[0-8]|7[0-79])|5(?:0[2-8]|[124-6]\\d|[38][0-8]|[79][0-7])|6(?:0[02-9]|[1-358]\\d|[47][0-8]|6[1-9])|7(?:0[2-8]|1[1-9]|[27][0-7]|3\\d|[4-6][0-8]|8[0-5]|9[013-7])|8(?:0[2-9]|1[0-79]|2\\d|3[0-46-9]|4[0-6]|5[013-9]|6[1-8]|7[0-8]|8[0-24-6])|9(?:0[6-9]|[1-4]\\d|[589][0-7]|6[0-8]|7[0-467]))\\d{3,12}",
             metadata->fixed_line().national_number_pattern());
   EXPECT_EQ("30123456", metadata->fixed_line().example_number());
   EXPECT_EQ(10, metadata->toll_free().possible_length(0));
-  EXPECT_EQ("900([135]\\d{6}|9\\d{7})",
+  EXPECT_EQ("(?:137[7-9]|900(?:[135]|9\\d))\\d{6}",
             metadata->premium_rate().national_number_pattern());
 }
 
@@ -329,13 +329,13 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadARMetadata) {
   EXPECT_EQ(54, metadata->country_code());
   EXPECT_EQ("00", metadata->international_prefix());
   EXPECT_EQ("0", metadata->national_prefix());
-  EXPECT_EQ("0?(?:(11|2(?:2(?:02?|[13]|2[13-79]|4[1-6]|5[2457]|6[124-8]|7[1-4]|8[13-6]|9[1267])|302?|1[467]|2[03-6]|3[13-8]|[49][2-6]|5[2-8]|[67])|4(?:7[3-578]|9)|6(?:[0136]|2[24-6]|4[6-8]?|5[15-8])|80|9(?:0[1-3]|[19]|2\d|3[1-6]|4[02568]?|5[2-4]|6[2-46]|72?|8[23]?))|3(?:3(?:2[79]|6|8[2578])|4(?:0[0-24-9]|[12]|3[5-8]?|4[24-7]|5[4-68]?|6[02-9]|7[126]|8[2379]?|9[1-36-8])|5(?:1|2[1245]|3[237]?|4[1-46-9]|6[7[1-6]|8[2-5]?)|6[24]|7(?:[069]|1[1568]|2[15]|3[145]|4[13]|5[14-8]|7[2-57]|8[126])|8(?:[01]|2[15-7]|3[2578]?|4[13-6]|5[4-8]?|6[1-357-9]|7[36-8]?|8[5-8]?|9[124])))15)?", metadata->national_prefix_for_parsing());
+  EXPECT_EQ("0?(?:(11|2(?:2(?:02?|[13]|2[13-79]|4[1-6]|5[2457]|6[124-8]|7[1-4]|8[13-6]|9[1267])|3(?:02?|1[467]|2[03-6]|3[13-8]|[49][2-6]|5[2-8]|[67])|4(?:7[3-578]|9)|6(?:[0136]|2[24-6]|4[6-8]?|5[15-8])|80|9(?:0[1-3]|[19]|2\d|3[1-6]|4[02568]?|5[2-4]|6[2-46]|72?|8[23]?))|3(?:3(?:2[79]|6|8[2578])|4(?:0[0-24-9]|[12]|3[5-8]?|4[24-7]|5[4-68]?|6[02-9]|7[126]|8[2379]?|9[1-36-8])|5(?:1|2[1245]|3[237]?|4[1-46-9]|6[2-4]|7[1-6]|8[2-5]?)|6[24]|7(?:[069]|1[1568]|2[15]|3[145]|4[13]|5[14-8]|7[2-57]|8[126])|8(?:[01]|2[15-7]|3[2578]?|4[13-6]|5[4-8]?|6[1-357-9]|7[36-8]?|8[5-8]?|9[124])))15)?", metadata->national_prefix_for_parsing());
   EXPECT_EQ("9$1", metadata->national_prefix_transform_rule());
   ASSERT_EQ(12, metadata->number_format_size());
-  EXPECT_EQ("$2 15 $3-$4", metadata->number_format(2).format());
-  EXPECT_EQ("(\\d)(\\d{4})(\\d{2})(\\d{4})",
+  EXPECT_EQ("$1-$2", metadata->number_format(2).format());
+  EXPECT_EQ("(\\d{4})(\\d{4})",
             metadata->number_format(3).pattern());
-  EXPECT_EQ("(\\d)(\\d{4})(\\d{2})(\\d{4})",
+  EXPECT_EQ("(\\d{3})(\\d{3})(\\d{4})",
             metadata->intl_number_format(3).pattern());
   EXPECT_EQ("$1 $2-$3", metadata->intl_number_format(3).format());
 }
@@ -595,7 +595,7 @@ TEST_F(PhoneNumberUtilTest, FormatGBNumber) {
 
   test_number.set_national_number(uint64{7912345678});
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
-  EXPECT_EQ("(07912) 345678", formatted_number);
+  EXPECT_EQ("07912 345678", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::INTERNATIONAL,
                      &formatted_number);
   EXPECT_EQ("+44 7912 345678", formatted_number);
@@ -1148,7 +1148,7 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::US(), true, /* keep formatting */
       &formatted_number);
-  EXPECT_EQ("=1 800-253-0000", formatted_number);
+  EXPECT_EQ("+1 800-253-0000", formatted_number);
   phone_util_.FormatNumberForMobileDialing(
       test_number, RegionCode::CN(), true, &formatted_number);
   EXPECT_EQ("+1 800-253-0000", formatted_number);
