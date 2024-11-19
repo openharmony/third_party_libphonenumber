@@ -114,8 +114,8 @@ ohos_shared_library("phonenumber_standard") {
   deps = phonenumber_deps
   public_external_deps = [ "protobuf:protobuf_lite" ]
   external_deps = [
-    "abseil-cpp:absl_base",
     "abseil-cpp:absl_strings",
+    "abseil-cpp:absl_time",
     "bounds_checking_function:libsec_shared",
     "icu:shared_icui18n",
     "icu:shared_icuuc",
