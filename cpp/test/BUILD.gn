@@ -19,14 +19,6 @@ config("phonenumber_test_config") {
   include_dirs = [
     "//third_party/libphonenumber/cpp/test",
     "//third_party/libphonenumber/cpp/src",
-    "//third_party/googletest/googletest/include",
-    "//third_party/googletest/googletest",
-    "//third_party/protobuf/src",
-    "//third_party/icu/icu4c/source",
-    "//third_party/icu/icu4c/source/common",
-    "//third_party/icu/icu4c/source/i18n",
-    "//third_party/protobuf/src/google",
-    "//third_party/protobuf/src/google/protobuf",
   ]
   cflags_cc = [
     "-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
