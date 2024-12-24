@@ -39,8 +39,8 @@ config("phonenumber_config") {
 
 config("phonenumber_public_config") {
   include_dirs = [
-    "//third_party/libphonenumber/cpp/src",
-    "//third_party/libphonenumber/cpp/src/phonenumbers",
+    "./src",
+    "./src/phonenumbers",
   ]
 }
 
@@ -112,10 +112,12 @@ ohos_shared_library("phonenumber_standard") {
   public_configs = [ ":phonenumber_public_config" ]
   sources = phonenumber_source
   deps = phonenumber_deps
-  public_external_deps = [ "protobuf:protobuf_lite" ]
-  external_deps = [
-    "abseil-cpp:absl_base",
+  public_external_deps = [
     "abseil-cpp:absl_strings",
+    "abseil-cpp:absl_time",
+    "protobuf:protobuf_lite"
+  ]
+  external_deps = [
     "bounds_checking_function:libsec_shared",
     "icu:shared_icui18n",
     "icu:shared_icuuc",
@@ -139,7 +141,7 @@ ohos_shared_library("geocoding") {
     "src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc",
     "src/phonenumbers/phonenumber.pb.h",
   ]
-  deps = [ "//third_party/libphonenumber/cpp:phonenumber_standard" ]
+  deps = [ ":phonenumber_standard" ]
   external_deps = [
     "bounds_checking_function:libsec_shared",
     "icu:shared_icuuc",
