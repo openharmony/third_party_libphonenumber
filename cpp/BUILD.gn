@@ -20,9 +20,7 @@ group("build_module") {
   ]
 }
 config("phonenumber_config") {
-  include_dirs = [
-    "//third_party/libphonenumber/cpp/src",
-  ]
+  include_dirs = [ "//third_party/libphonenumber/cpp/src" ]
   cflags = [ "-Wno-implicit-fallthrough" ]
   cflags_cc = [
     "-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
@@ -141,9 +139,7 @@ ohos_shared_library("geocoding") {
     "src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc",
     "src/phonenumbers/phonenumber.pb.h",
   ]
-  deps = [
-    "//third_party/libphonenumber/cpp:phonenumber_standard",
-  ]
+  deps = [ "//third_party/libphonenumber/cpp:phonenumber_standard" ]
   external_deps = [
     "bounds_checking_function:libsec_shared",
     "icu:shared_icuuc",
