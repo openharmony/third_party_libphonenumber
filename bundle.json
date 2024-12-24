@@ -19,13 +19,12 @@
         "ram": "",
         "deps": {
             "components": [
-                "protobuf"
-            ],
-            "third_party": [
                 "abseil-cpp",
                 "bounds_checking_function",
-                "icu"
-            ]
+                "icu",
+                "protobuf"
+            ],
+            "third_party": []
         },
         "build": {
             "sub_component": [
