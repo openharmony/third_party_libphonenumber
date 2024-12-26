@@ -44,6 +44,16 @@ config("phonenumber_public_config") {
   ]
 }
 
+geocoding_source = [
+  "src/phonenumbers/geocoding/area_code_map.cc",
+  "src/phonenumbers/geocoding/default_map_storage.cc",
+  "src/phonenumbers/geocoding/geocoding_data.cc",
+  "src/phonenumbers/geocoding/geocoding_warpper.cc",
+  "src/phonenumbers/geocoding/mapping_file_provider.cc",
+  "src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc",
+  "src/phonenumbers/phonenumber.pb.h",
+]
+
 phonenumber_source = [
   "src/phonenumbers/phonenumber.cc",
   "src/phonenumbers/default_logger.cc",
@@ -87,9 +97,14 @@ geocoding_defines = [
 if (is_ohos) {
   phonenumber_source += [
     "src/phonenumbers/ohos/geocoding_data.pb.cc",
-    "src/phonenumbers/ohos/update_geocoding.cc",
     "src/phonenumbers/ohos/update_libphonenumber.cc",
     "src/phonenumbers/ohos/update_metadata.cc",
+  ]
+
+  geocoding_source += [
+    "src/phonenumbers/ohos/geocoding_data.pb.cc",
+    "src/phonenumbers/ohos/update_geocoding.cc",
+    "src/phonenumbers/ohos/update_libgeocoding.cc",
   ]
 
   phonenumber_deps += [ ":version_txt" ]
@@ -132,15 +147,7 @@ ohos_shared_library("phonenumber_standard") {
 
 ohos_shared_library("geocoding") {
   configs = [ ":phonenumber_config" ]
-  sources = [
-    "src/phonenumbers/geocoding/area_code_map.cc",
-    "src/phonenumbers/geocoding/default_map_storage.cc",
-    "src/phonenumbers/geocoding/geocoding_data.cc",
-    "src/phonenumbers/geocoding/geocoding_warpper.cc",
-    "src/phonenumbers/geocoding/mapping_file_provider.cc",
-    "src/phonenumbers/geocoding/phonenumber_offline_geocoder.cc",
-    "src/phonenumbers/phonenumber.pb.h",
-  ]
+  sources = geocoding_source
   deps = [ ":phonenumber_standard" ]
   external_deps = [
     "bounds_checking_function:libsec_shared",
