@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "geocoding_warpper.h"
 #include "phonenumbers/geocoding/phonenumber_offline_geocoder.h"
+#include "phonenumbers/ohos/update_libgeocoding.h"
 #include "phonenumbers/phonenumberutil.h"
 #include <iostream>
 #include <string>
@@ -18,6 +19,7 @@ using i18n::phonenumbers::PhoneNumberOfflineGeocoder;
 using icu::Locale;
 
 extern "C" int exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength = 128) {
+    i18n::phonenumbers::UpdateLibgeocoding::LoadUpdateData();
     if(offlineGeocoder == NULL) {
         offlineGeocoder = new PhoneNumberOfflineGeocoder();
     }
