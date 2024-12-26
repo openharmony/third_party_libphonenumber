@@ -24,7 +24,6 @@ public:
 
 private:
     static const std::string METADATAINFO_PATH;
-    static const std::string GEOCODINGINFO_PATH;
 };
 }  // namespace phonenumbers
 }  // namespace i18n
