@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#ifndef I18N_PHONENUMBERS_UPDATE_LIBPGEOCODING_H_
-#define I18N_PHONENUMBERS_UPDATE_LIBPGEOCODING_H_
+#ifndef I18N_PHONENUMBERS_UPDATE_LIBGEOCODING_H_
+#define I18N_PHONENUMBERS_UPDATE_LIBGEOCODING_H_
 
 namespace i18n {
 namespace phonenumbers {
@@ -27,4 +27,4 @@ private:
 };
 }  // namespace phonenumbers
 }  // namespace i18n
-#endif  // I18N_PHONENUMBERS_UPDATE_METADATA_H_
+#endif  // I18N_PHONENUMBERS_UPDATE_LIBGEOCODING_H_
