@@ -13,22 +13,18 @@
  * limitations under the License.
  */
 
-#include <fcntl.h>
-#include <unistd.h>
-#include "update_metadata.h"
-#include "update_libphonenumber.h"
+#ifndef I18N_PHONENUMBERS_UPDATE_LIBGEOCODING_H_
+#define I18N_PHONENUMBERS_UPDATE_LIBGEOCODING_H_
 
 namespace i18n {
 namespace phonenumbers {
-const std::string UpdateLibphonenumber::METADATAINFO_PATH = "/system/etc/LIBPHONENUMBER/mount_dir/MetadataInfo";
+class UpdateLibgeocoding {
+public:
+    static void LoadUpdateData();
 
-void UpdateLibphonenumber::LoadUpdateData()
-{
-    int metadataFd = open(METADATAINFO_PATH.c_str(), O_RDONLY);
-    UpdateMetadata::LoadUpdatedMetadata(metadataFd);
-    if (metadataFd != -1) {
-        close(metadataFd);
-    }
-}
+private:
+    static const std::string GEOCODINGINFO_PATH;
+};
 }  // namespace phonenumbers
 }  // namespace i18n
+#endif  // I18N_PHONENUMBERS_UPDATE_LIBGEOCODING_H_

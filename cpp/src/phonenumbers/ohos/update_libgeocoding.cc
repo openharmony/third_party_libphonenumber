@@ -15,19 +15,19 @@
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "update_metadata.h"
-#include "update_libphonenumber.h"
+#include "update_geocoding.h"
+#include "update_libgeocoding.h"
 
 namespace i18n {
 namespace phonenumbers {
-const std::string UpdateLibphonenumber::METADATAINFO_PATH = "/system/etc/LIBPHONENUMBER/mount_dir/MetadataInfo";
+const std::string UpdateLibgeocoding::GEOCODINGINFO_PATH = "/system/etc/LIBPHONENUMBER/mount_dir/GeocodingInfo";
 
-void UpdateLibphonenumber::LoadUpdateData()
+void UpdateLibgeocoding::LoadUpdateData()
 {
-    int metadataFd = open(METADATAINFO_PATH.c_str(), O_RDONLY);
-    UpdateMetadata::LoadUpdatedMetadata(metadataFd);
-    if (metadataFd != -1) {
-        close(metadataFd);
+    int geocodingFd = open(GEOCODINGINFO_PATH.c_str(), O_RDONLY);
+    UpdateGeocoding::LoadGeocodingData(geocodingFd);
+    if (geocodingFd != -1) {
+        close(geocodingFd);
     }
 }
 }  // namespace phonenumbers
