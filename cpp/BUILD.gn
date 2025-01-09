@@ -107,18 +107,9 @@ if (is_ohos) {
     "src/phonenumbers/ohos/update_libgeocoding.cc",
   ]
 
-  phonenumber_deps += [ ":version_txt" ]
-
   phonenumber_defines += [ "LIBPHONENUMBER_UPGRADE" ]
 
   geocoding_defines += [ "LIBPHONENUMBER_UPGRADE" ]
-
-  ohos_prebuilt_etc("version_txt") {
-    source = "./src/phonenumbers/ohos/etc/version.txt"
-    module_install_dir = "etc/LIBPHONENUMBER/generic/"
-    part_name = "libphonenumber"
-    subsystem_name = "thirdparty"
-  }
 }
 
 ohos_shared_library("phonenumber_standard") {
