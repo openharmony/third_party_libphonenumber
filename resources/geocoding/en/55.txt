@@ -1927,7 +1927,6 @@
 55173846|Mira Estrela - SP
 55173847|Floreal - SP
 55173848|Gastão Vidigal - SP
-55173849|Macedônia - SP
 55173874|Macaubal - SP
 55173875|São João de Iracema - SP
 55173889|Altair - SP
@@ -10676,7 +10675,7 @@
 55843479|Carnaúba dos Dantas - RN
 55843488|Cerro Corá - RN
 55843504|Caicó - RN
-55843521|Macau - RN
+55843521|Macao - RN
 55843522|Pendências - RN
 55843523|Alto do Rodrigues - RN
 55843525|Guamaré - RN
