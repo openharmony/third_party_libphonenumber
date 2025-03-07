@@ -10675,7 +10675,7 @@
 55843479|Carnaúba dos Dantas - RN
 55843488|Cerro Corá - RN
 55843504|Caicó - RN
-55843521|Macao - RN
+55843521|Macau - RN
 55843522|Pendências - RN
 55843523|Alto do Rodrigues - RN
 55843525|Guamaré - RN
