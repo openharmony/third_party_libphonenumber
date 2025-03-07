@@ -1145,7 +1145,6 @@
 3596137|Butovo
 3596138|Nedan
 35961391|Slomer
-35961393|Gorsko Kosovo
 35961394|Daskot
 35961395|Paskalevets
 35961397|Musina
@@ -1753,7 +1752,6 @@
 35981266|Starmen, Ruse
 35981268|Krivina, Ruse
 3598127|Karamanovo
-3598128|Polsko Kosovo
 3598129|Lom Cherkovna
 3598131|Borisovo, Ruse
 3598132|Yudelnik
@@ -2047,7 +2045,6 @@
 3599352|Druzhba
 3599353|Koshava
 3599354|Antimovo, Vidin
-3599355|Kosovo, Vidin
 3599356|Kalenik, Vidin
 359936|Belogradchik
 359938|Kula

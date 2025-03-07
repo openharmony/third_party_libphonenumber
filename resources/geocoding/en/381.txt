@@ -45,6 +45,5 @@
 38135|Jagodina
 38136|Kraljevo
 38137|Krusevac
-38138|Pristina
 38139|Pec
 381390|Dakovica

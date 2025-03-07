@@ -45,7 +45,6 @@
 2125286|Tiznit
 2125287|Guelmim/Tan Tan
 2125288|Agadir/Es-Semara/Tarfaya
-2125289|Dakhla/Laayoune
 212529|Casablanca
 2125296|Marrakech
 2125297|Agadir
