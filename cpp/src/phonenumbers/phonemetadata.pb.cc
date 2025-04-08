@@ -42,7 +42,6 @@ static void InitDefaultsscc_info_NumberFormat_phonemetadata_2eproto() {
     new (ptr) ::i18n::phonenumbers::NumberFormat();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::i18n::phonenumbers::NumberFormat::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_NumberFormat_phonemetadata_2eproto =
@@ -56,7 +55,6 @@ static void InitDefaultsscc_info_PhoneMetadata_phonemetadata_2eproto() {
     new (ptr) ::i18n::phonenumbers::PhoneMetadata();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::i18n::phonenumbers::PhoneMetadata::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_PhoneMetadata_phonemetadata_2eproto =
@@ -72,7 +70,6 @@ static void InitDefaultsscc_info_PhoneMetadataCollection_phonemetadata_2eproto()
     new (ptr) ::i18n::phonenumbers::PhoneMetadataCollection();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::i18n::phonenumbers::PhoneMetadataCollection::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PhoneMetadataCollection_phonemetadata_2eproto =
@@ -87,7 +84,6 @@ static void InitDefaultsscc_info_PhoneNumberDesc_phonemetadata_2eproto() {
     new (ptr) ::i18n::phonenumbers::PhoneNumberDesc();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::i18n::phonenumbers::PhoneNumberDesc::InitAsDefaultInstance();
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PhoneNumberDesc_phonemetadata_2eproto =
@@ -98,8 +94,6 @@ namespace phonenumbers {
 
 // ===================================================================
 
-void NumberFormat::InitAsDefaultInstance() {
-}
 class NumberFormat::_Internal {
  public:
   using HasBits = decltype(std::declval<NumberFormat>()._has_bits_);
@@ -137,22 +131,22 @@ NumberFormat::NumberFormat(const NumberFormat& from)
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   pattern_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_pattern()) {
-    pattern_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_pattern(),
+    pattern_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_pattern(), 
       GetArena());
   }
   format_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_format()) {
-    format_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_format(),
+    format_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_format(), 
       GetArena());
   }
   national_prefix_formatting_rule_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_national_prefix_formatting_rule()) {
-    national_prefix_formatting_rule_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_national_prefix_formatting_rule(),
+    national_prefix_formatting_rule_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_national_prefix_formatting_rule(), 
       GetArena());
   }
   domestic_carrier_code_formatting_rule_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_domestic_carrier_code_formatting_rule()) {
-    domestic_carrier_code_formatting_rule_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_domestic_carrier_code_formatting_rule(),
+    domestic_carrier_code_formatting_rule_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_domestic_carrier_code_formatting_rule(), 
       GetArena());
   }
   national_prefix_optional_when_formatting_ = from.national_prefix_optional_when_formatting_;
@@ -227,7 +221,6 @@ void NumberFormat::Clear() {
 const char* NumberFormat::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -506,8 +499,6 @@ std::string NumberFormat::GetTypeName() const {
 
 // ===================================================================
 
-void PhoneNumberDesc::InitAsDefaultInstance() {
-}
 class PhoneNumberDesc::_Internal {
  public:
   using HasBits = decltype(std::declval<PhoneNumberDesc>()._has_bits_);
@@ -535,12 +526,12 @@ PhoneNumberDesc::PhoneNumberDesc(const PhoneNumberDesc& from)
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   national_number_pattern_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_national_number_pattern()) {
-    national_number_pattern_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_national_number_pattern(),
+    national_number_pattern_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_national_number_pattern(), 
       GetArena());
   }
   example_number_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_example_number()) {
-    example_number_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_example_number(),
+    example_number_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_example_number(), 
       GetArena());
   }
   // @@protoc_insertion_point(copy_constructor:i18n.phonenumbers.PhoneNumberDesc)
@@ -603,7 +594,6 @@ void PhoneNumberDesc::Clear() {
 const char* PhoneNumberDesc::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -822,42 +812,6 @@ std::string PhoneNumberDesc::GetTypeName() const {
 
 // ===================================================================
 
-void PhoneMetadata::InitAsDefaultInstance() {
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->general_desc_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->fixed_line_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->mobile_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->toll_free_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->premium_rate_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->shared_cost_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->personal_number_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->voip_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->pager_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->uan_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->emergency_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->voicemail_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->short_code_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->standard_rate_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->carrier_specific_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->sms_services_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-  ::i18n::phonenumbers::_PhoneMetadata_default_instance_._instance.get_mutable()->no_international_dialling_ = const_cast< ::i18n::phonenumbers::PhoneNumberDesc*>(
-      ::i18n::phonenumbers::PhoneNumberDesc::internal_default_instance());
-}
 class PhoneMetadata::_Internal {
  public:
   using HasBits = decltype(std::declval<PhoneMetadata>()._has_bits_);
@@ -1054,42 +1008,42 @@ PhoneMetadata::PhoneMetadata(const PhoneMetadata& from)
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_id()) {
-    id_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+    id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_id(), 
       GetArena());
   }
   international_prefix_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_international_prefix()) {
-    international_prefix_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_international_prefix(),
+    international_prefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_international_prefix(), 
       GetArena());
   }
   national_prefix_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_national_prefix()) {
-    national_prefix_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_national_prefix(),
+    national_prefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_national_prefix(), 
       GetArena());
   }
   preferred_extn_prefix_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_preferred_extn_prefix()) {
-    preferred_extn_prefix_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_preferred_extn_prefix(),
+    preferred_extn_prefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_preferred_extn_prefix(), 
       GetArena());
   }
   national_prefix_for_parsing_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_national_prefix_for_parsing()) {
-    national_prefix_for_parsing_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_national_prefix_for_parsing(),
+    national_prefix_for_parsing_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_national_prefix_for_parsing(), 
       GetArena());
   }
   national_prefix_transform_rule_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_national_prefix_transform_rule()) {
-    national_prefix_transform_rule_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_national_prefix_transform_rule(),
+    national_prefix_transform_rule_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_national_prefix_transform_rule(), 
       GetArena());
   }
   preferred_international_prefix_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_preferred_international_prefix()) {
-    preferred_international_prefix_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_preferred_international_prefix(),
+    preferred_international_prefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_preferred_international_prefix(), 
       GetArena());
   }
   leading_digits_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_leading_digits()) {
-    leading_digits_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_leading_digits(),
+    leading_digits_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_leading_digits(), 
       GetArena());
   }
   if (from._internal_has_general_desc()) {
@@ -1193,8 +1147,9 @@ void PhoneMetadata::SharedCtor() {
   national_prefix_transform_rule_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   preferred_international_prefix_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   leading_digits_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(&general_desc_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&mobile_number_portable_region_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&general_desc_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&mobile_number_portable_region_) -
       reinterpret_cast<char*>(&general_desc_)) + sizeof(mobile_number_portable_region_));
 }
 
@@ -1367,7 +1322,6 @@ void PhoneMetadata::Clear() {
 const char* PhoneMetadata::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -2266,8 +2220,6 @@ std::string PhoneMetadata::GetTypeName() const {
 
 // ===================================================================
 
-void PhoneMetadataCollection::InitAsDefaultInstance() {
-}
 class PhoneMetadataCollection::_Internal {
  public:
 };
@@ -2327,7 +2279,6 @@ void PhoneMetadataCollection::Clear() {
 
 const char* PhoneMetadataCollection::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
