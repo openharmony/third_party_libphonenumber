@@ -15,55 +15,55 @@
 # Generated from:
 # http://en.wikipedia.org/wiki/+886 [436021308]
 
-8862|Taipei
-8863|Taoyuan/Hsinchu/Yilan/Hualien
-88637|Miaoli
-8864001|Taichung/Changhua
-8864002|Taichung/Changhua
-8864003|Taichung/Changhua
-8864004|Taichung/Changhua
-8864005|Taichung/Changhua
-8864006|Taichung/Changhua
-8864007|Taichung/Changhua
-8864008|Taichung/Changhua
-8864009|Taichung/Changhua
-886402|Taichung/Changhua
-886403|Taichung/Changhua
-886404|Taichung/Changhua
-886408|Taichung/Changhua
-88641|Taichung/Changhua
-88642|Taichung/Changhua
-88643|Taichung/Changhua
-88644|Taichung/Changhua
-88647|Taichung/Changhua
-88648|Taichung/Changhua
-88649|Nantou
-88652|Chiayi/Yunlin
-88653|Chiayi/Yunlin
-88654|Chiayi/Yunlin
-88655|Chiayi/Yunlin
-88656|Chiayi/Yunlin
-88657|Chiayi/Yunlin
-88658|Chiayi/Yunlin
-8866|Tainan/Penghu
-88671|Kaohsiung
-88672|Kaohsiung
-88673|Kaohsiung
-88674|Kaohsiung
-88675|Kaohsiung
-88676|Kaohsiung
-88677|Kaohsiung
-88678|Kaohsiung
-88679|Kaohsiung
-88680|Pingtung
-886823|Kinmen
-886824|Kinmen
-886825|Kinmen
-886826|Wuqiu
-886827|Kinmen
-886828|Kinmen
-88683|Matsu
-88684|Pingtung
-88687|Pingtung
-88688|Pingtung
-88689|Taitung
+8862|Taipei (China)
+8863|Taoyuan (China)/Hsinchu (China)/Yilan (China)/Hualien (China)
+88637|Miaoli (China)
+8864001|Taichung (China)/Changhua (China)
+8864002|Taichung (China)/Changhua (China)
+8864003|Taichung (China)/Changhua (China)
+8864004|Taichung (China)/Changhua (China)
+8864005|Taichung (China)/Changhua (China)
+8864006|Taichung (China)/Changhua (China)
+8864007|Taichung (China)/Changhua (China)
+8864008|Taichung (China)/Changhua (China)
+8864009|Taichung (China)/Changhua (China)
+886402|Taichung (China)/Changhua (China)
+886403|Taichung (China)/Changhua (China)
+886404|Taichung (China)/Changhua (China)
+886408|Taichung (China)/Changhua (China)
+88641|Taichung (China)/Changhua (China)
+88642|Taichung (China)/Changhua (China)
+88643|Taichung (China)/Changhua (China)
+88644|Taichung (China)/Changhua (China)
+88647|Taichung (China)/Changhua (China)
+88648|Taichung (China)/Changhua (China)
+88649|Nantou (China)
+88652|Chiayi (China)/Yunlin (China)
+88653|Chiayi (China)/Yunlin (China)
+88654|Chiayi (China)/Yunlin (China)
+88655|Chiayi (China)/Yunlin (China)
+88656|Chiayi (China)/Yunlin (China)
+88657|Chiayi (China)/Yunlin (China)
+88658|Chiayi (China)/Yunlin (China)
+8866|Tainan (China)/Penghu (China)
+88671|Kaohsiung (China)
+88672|Kaohsiung (China)
+88673|Kaohsiung (China)
+88674|Kaohsiung (China)
+88675|Kaohsiung (China)
+88676|Kaohsiung (China)
+88677|Kaohsiung (China)
+88678|Kaohsiung (China)
+88679|Kaohsiung (China)
+88680|Pingtung (China)
+886823|Kinmen (China)
+886824|Kinmen (China)
+886825|Kinmen (China)
+886826|Wuqiu (China)
+886827|Kinmen (China)
+886828|Kinmen (China)
+88683|Matsu (China)
+88684|Pingtung (China)
+88687|Pingtung (China)
+88688|Pingtung (China)
+88689|Taitung (China)
