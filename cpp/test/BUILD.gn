@@ -17,8 +17,8 @@ module_output_path = "libphonenumber/libphonenumber_test"
 
 config("phonenumber_test_config") {
   include_dirs = [
-    "//third_party/libphonenumber/cpp/test",
-    "//third_party/libphonenumber/cpp/src",
+    "../../cpp/test",
+    "../../cpp/src",
   ]
   cflags_cc = [
     "-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS",
@@ -51,7 +51,7 @@ ohos_unittest("libphonenumber_test") {
     "HAVE_PTHREAD",
   ]
 
-  deps = [ "//third_party/libphonenumber/cpp:phonenumber_standard" ]
+  deps = [ "../../cpp:phonenumber_standard" ]
   external_deps = [
     "googletest:gtest",
     "icu:shared_icui18n",
