@@ -701,7 +701,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
   EXPECT_EQ("+52 800 123 45", formatter_->InputDigit('5', &result_));
   EXPECT_EQ("+52 800 123 456", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("+52 800 123 4567", formatter_->InputDigit('7', &result_));
-  
+
   // +529011234567, proactively ensuring that no formatting is applied,
   // where a format is chosen that would otherwise have led to some digits
   // being dropped.
@@ -915,6 +915,24 @@ TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_AU) {
   EXPECT_EQ("0011 244 250 253 22", formatter_->InputDigit('2', &result_));
   EXPECT_EQ("0011 244 250 253 222", formatter_->InputDigit('2', &result_));
 }
+
+/* <issue: https://github.com/google/libphonenumber/pull/3924> 20251015 begin */
+TEST_F(AsYouTypeFormatterTest, AYTF_With_Special_Characters) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::JP()));
+  // +81००23456
+  formatter_->Clear();
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+81 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+81 0", formatter_->InputDigit(UnicodeString("\u0966")[0], &result_));
+  EXPECT_EQ("+81 00", formatter_->InputDigit(UnicodeString("\u0966")[0], &result_));
+  EXPECT_EQ("+81००2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+81००23", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+81००234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+81००2345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("+81००23456", formatter_->InputDigit('6', &result_));
+}
+/* <issue: https://github.com/google/libphonenumber/pull/3924> 20251015 end */
 
 TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_KR) {
   formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::KR()));
