@@ -712,9 +712,11 @@ char AsYouTypeFormatter::NormalizeAndAccrueDigitsAndPlusSign(
     string number;
     UnicodeString(next_char).toUTF8String(number);
     phone_util_.NormalizeDigitsOnly(&number);
-    accrued_input_without_formatting_.append(next_char);
     national_number_.append(number);
     normalized_char = number[0];
+    /* <issue: https://github.com/google/libphonenumber/pull/3924> 20251015 begin */
+    accrued_input_without_formatting_.append(normalized_char);
+    /* <issue: https://github.com/google/libphonenumber/pull/3924> 20251015 end */
   }
   if (remember_position) {
     position_to_remember_ = accrued_input_without_formatting_.length();
