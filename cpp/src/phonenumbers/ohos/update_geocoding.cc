@@ -15,7 +15,7 @@
 
 #include <dirent.h>
 #include <fcntl.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <unistd.h>
 #include "update_geocoding.h"
 
@@ -23,7 +23,8 @@ namespace i18n {
 namespace phonenumbers {
 GeocodingInfo* UpdateGeocoding::geocodingInfo = nullptr;
 
-std::map<std::string, PrefixDescriptions>* UpdateGeocoding::prefixDescriptionsMap = new std::map<std::string, PrefixDescriptions>();
+std::map<std::string, PrefixDescriptions>* UpdateGeocoding::prefixDescriptionsMap =
+    new std::map<std::string, PrefixDescriptions>();
 std::map<std::string, PrefixesInfo>* UpdateGeocoding::prefixesInfoMap = new std::map<std::string, PrefixesInfo>();
 const PrefixDescriptions** UpdateGeocoding::prefixDescriptionsArray = nullptr;
 LanguageCodeInfo* UpdateGeocoding::languageCodeInfo = nullptr;
@@ -234,7 +235,8 @@ void UpdateGeocoding::ModifyPossibleLengths(int32_t* possibleLengths, PrefixesIn
     }
 }
 
-const CountryLanguages* UpdateGeocoding::UpdateCountryLanguages(const CountryLanguages** preCountryLanguagesArray, int index)
+const CountryLanguages* UpdateGeocoding::UpdateCountryLanguages(const CountryLanguages** preCountryLanguagesArray,
+    int index)
 {
     countryLanguagesArray = preCountryLanguagesArray;
     int countryCode = isupdatedCountryCodes ? curCountryCodes[index] : preCountryCodes[index];
