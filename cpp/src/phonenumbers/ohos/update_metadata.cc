@@ -15,7 +15,7 @@
 
 #include <dirent.h>
 #include <fcntl.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <unistd.h>
 #include "update_metadata.h"
 
@@ -92,7 +92,8 @@ void UpdateMetadata::LoadUpdatedMetadata(int fd)
     }
     phoneMetadataCollection = new PhoneMetadataCollection();
     phoneMetadataCollection->ParseFromFileDescriptor(fd);
-    for (google::protobuf::RepeatedPtrField<PhoneMetadata>::const_iterator it = phoneMetadataCollection->metadata().begin();
+    for (google::protobuf::RepeatedPtrField<PhoneMetadata>::const_iterator it =
+        phoneMetadataCollection->metadata().begin();
         it != phoneMetadataCollection->metadata().end(); ++it) {
         
         std::string mdyRegionCode = it->id();
