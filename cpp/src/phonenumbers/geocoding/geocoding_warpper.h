@@ -22,4 +22,5 @@ using i18n::phonenumbers::PhoneNumberOfflineGeocoder;
 
 PhoneNumberOfflineGeocoder* offlineGeocoder = NULL;
 i18n::phonenumbers::PhoneNumberUtil* util = NULL;
-extern "C" int exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength);
+extern "C" int exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength,
+    bool isTyping=false);

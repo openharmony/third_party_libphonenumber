@@ -31,7 +31,9 @@ using i18n::phonenumbers::PhoneNumberUtil;
 using i18n::phonenumbers::PhoneNumberOfflineGeocoder;
 using icu::Locale;
 
-extern "C" int exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength = 128) {
+extern "C" int exposeLocationName(const char* pNumber, const char* locale, char* res, const int resLength,
+    bool isTyping)
+{
     i18n::phonenumbers::UpdateLibgeocoding::LoadUpdateData();
     if(offlineGeocoder == NULL) {
         offlineGeocoder = new PhoneNumberOfflineGeocoder();
@@ -47,7 +49,12 @@ extern "C" int exposeLocationName(const char* pNumber, const char* locale, char*
         std::string empty = "";
         return strcpy_s(res, resLength, empty.c_str());
     }
-    std::string result = offlineGeocoder->GetDescriptionForNumber(phoneNumber, uLocale);
+    std::string result = "";
+    if (isTyping) {
+        result = offlineGeocoder->GetDescriptionForValidNumber(phoneNumber, uLocale);
+    } else {
+        result = offlineGeocoder->GetDescriptionForNumber(phoneNumber, uLocale);
+    }
     return strcpy_s(res, resLength, result.c_str());
 }
 
