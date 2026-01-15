@@ -1,4 +1,4 @@
 # This file was originally tracked by Git LFS but LFS tracking has been removed
 version https://git-lfs.github.com/spec/v1
-oid sha256:8c350479cb962718d8c038672ba471bf34801366abf76b314bec8c5b6c1fa34d
-size 28092656
+oid sha256:13ab99aa48793a0dea60cb96c2bbe1bd840a0457d59c6a35eaba7cc6f32a6dea
+size 28661035
