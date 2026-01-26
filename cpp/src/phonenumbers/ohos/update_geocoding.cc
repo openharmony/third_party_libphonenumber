@@ -158,6 +158,8 @@ void UpdateGeocoding::AddPrefixDescriptions(const std::string& languageCode, int
     int lengthsSize = prefixesInfo.lengths_num();
     int32_t* possibleLengths = (int32_t*)malloc(sizeof(int32_t) * lengthsSize);
     if (!possibleLengths) {
+        free(prefixes);
+        prefixes = nullptr;
         for (int i = 0; i < prefixesSize; i++) {
             free(descriptions[i]);
         }
