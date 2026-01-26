@@ -161,7 +161,7 @@ void UpdateGeocoding::AddPrefixDescriptions(const std::string& languageCode, int
         free(prefixes);
         prefixes = nullptr;
         for (int i = 0; i < prefixesSize; i++) {
-            free(descriptions[i]);
+            free(const_cast<char*>(descriptions[i]));
         }
         free(descriptions);
         descriptions = nullptr;
