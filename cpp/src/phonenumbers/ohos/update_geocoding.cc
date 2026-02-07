@@ -149,6 +149,8 @@ void UpdateGeocoding::AddPrefixDescriptions(const std::string& languageCode, int
     memset(prefixes, 0, sizeof(int32_t) * prefixesSize);
     const char** descriptions = (const char **)malloc(sizeof(char*) * prefixesSize);
     if (!descriptions) {
+        free(prefixes);
+        prefixes = nullptr;
         return;
     }
     ModifyPrefixDescriptions(prefixes, descriptions, prefixesInfo, index);
@@ -156,6 +158,13 @@ void UpdateGeocoding::AddPrefixDescriptions(const std::string& languageCode, int
     int lengthsSize = prefixesInfo.lengths_num();
     int32_t* possibleLengths = (int32_t*)malloc(sizeof(int32_t) * lengthsSize);
     if (!possibleLengths) {
+        free(prefixes);
+        prefixes = nullptr;
+        for (int i = 0; i < prefixesSize; i++) {
+            free(const_cast<char*>(descriptions[i]));
+        }
+        free(descriptions);
+        descriptions = nullptr;
         return;
     }
     ModifyPossibleLengths(possibleLengths, prefixesInfo, index);
