@@ -49,9 +49,6 @@ void UpdateGeocoding::LoadGeocodingData(int fd)
     if (geocodingInfo != nullptr) {
         return;
     }
-    if (fd == -1) {
-        return;
-    }
     geocodingInfo = new GeocodingInfo();
     geocodingInfo->ParseFromFileDescriptor(fd);
     languageCodeInfo = new  LanguageCodeInfo(geocodingInfo->language_code_info());

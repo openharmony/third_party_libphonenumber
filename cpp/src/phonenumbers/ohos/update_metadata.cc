@@ -87,9 +87,6 @@ void UpdateMetadata::LoadUpdatedMetadata(int fd)
     if (phoneMetadataCollection != nullptr) {
         return;
     }
-    if (fd == -1) {
-        return;
-    }
     phoneMetadataCollection = new PhoneMetadataCollection();
     phoneMetadataCollection->ParseFromFileDescriptor(fd);
     for (google::protobuf::RepeatedPtrField<PhoneMetadata>::const_iterator it =
