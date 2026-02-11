@@ -18,6 +18,8 @@
 #include "update_metadata.h"
 #include "update_libphonenumber.h"
 
+#define FDSAN_TAG 1
+
 namespace i18n {
 namespace phonenumbers {
 const std::string UpdateLibphonenumber::METADATAINFO_PATH = "/system/etc/LIBPHONENUMBER/mount_dir/MetadataInfo";
@@ -25,10 +27,14 @@ const std::string UpdateLibphonenumber::METADATAINFO_PATH = "/system/etc/LIBPHON
 void UpdateLibphonenumber::LoadUpdateData()
 {
     int metadataFd = open(METADATAINFO_PATH.c_str(), O_RDONLY);
-    UpdateMetadata::LoadUpdatedMetadata(metadataFd);
-    if (metadataFd != -1) {
-        close(metadataFd);
+    if (metadataFd == -1) {
+        return;
     }
+    // shift the domain ID left by 32 bits
+    uint64_t fdTag = (static_cast<uint64_t>(0xD001E00) << 32) | FDSAN_TAG;
+    fdsan_exchange_owner_tag(metadataFd, 0, fdTag);
+    UpdateMetadata::LoadUpdatedMetadata(metadataFd);
+    fdsan_close_with_tag(metadataFd, fdTag);
 }
 }  // namespace phonenumbers
 }  // namespace i18n
