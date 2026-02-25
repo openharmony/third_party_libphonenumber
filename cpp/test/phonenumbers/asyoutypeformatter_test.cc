@@ -701,7 +701,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
   EXPECT_EQ("+52 800 123 45", formatter_->InputDigit('5', &result_));
   EXPECT_EQ("+52 800 123 456", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("+52 800 123 4567", formatter_->InputDigit('7', &result_));
-
+  
   // +529011234567, proactively ensuring that no formatting is applied,
   // where a format is chosen that would otherwise have led to some digits
   // being dropped.

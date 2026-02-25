@@ -49,6 +49,9 @@ void UpdateGeocoding::LoadGeocodingData(int fd)
     if (geocodingInfo != nullptr) {
         return;
     }
+    if (fd == -1) {
+        return;
+    }
     geocodingInfo = new GeocodingInfo();
     geocodingInfo->ParseFromFileDescriptor(fd);
     languageCodeInfo = new  LanguageCodeInfo(geocodingInfo->language_code_info());
@@ -165,7 +168,7 @@ void UpdateGeocoding::AddPrefixDescriptions(const std::string& languageCode, int
         return;
     }
     ModifyPossibleLengths(possibleLengths, prefixesInfo, index);
- 
+
     PrefixDescriptions prefixDescriptions = {
         prefixes,
         prefixesSize,
