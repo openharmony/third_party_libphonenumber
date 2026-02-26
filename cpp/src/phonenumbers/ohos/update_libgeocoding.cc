@@ -18,6 +18,8 @@
 #include "update_geocoding.h"
 #include "update_libgeocoding.h"
 
+#define FDSAN_TAG 1
+
 namespace i18n {
 namespace phonenumbers {
 const std::string UpdateLibgeocoding::GEOCODINGINFO_PATH = "/system/etc/LIBPHONENUMBER/mount_dir/GeocodingInfo";
@@ -25,10 +27,14 @@ const std::string UpdateLibgeocoding::GEOCODINGINFO_PATH = "/system/etc/LIBPHONE
 void UpdateLibgeocoding::LoadUpdateData()
 {
     int geocodingFd = open(GEOCODINGINFO_PATH.c_str(), O_RDONLY);
-    UpdateGeocoding::LoadGeocodingData(geocodingFd);
-    if (geocodingFd != -1) {
-        close(geocodingFd);
+    if (geocodingFd == -1) {
+        return;
     }
+    // shift the domain ID left by 32 bits
+    uint64_t fdTag = (static_cast<uint64_t>(0xD001E00) << 32) | FDSAN_TAG;
+    fdsan_exchange_owner_tag(geocodingFd, 0, fdTag);
+    UpdateGeocoding::LoadGeocodingData(geocodingFd);
+    fdsan_close_with_tag(geocodingFd, fdTag);
 }
 }  // namespace phonenumbers
 }  // namespace i18n
