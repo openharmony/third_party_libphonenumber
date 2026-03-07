@@ -20,14 +20,16 @@
 #include <string>
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/phonemetadata.pb.h"
+#include "absl/container/flat_hash_map.h"
+#include "absl/container/node_hash_map.h"
 
 namespace i18n {
 namespace phonenumbers {
 class UpdateMetadata {
 public:
-    static void UpdateShortNumber(scoped_ptr<std::map<std::string, PhoneMetadata>>& metadataMap);
-    static void UpdatePhoneNumber(scoped_ptr<std::map<int, PhoneMetadata>>& countryMetadataMap,
-        scoped_ptr<std::map<std::string, PhoneMetadata>>& regionMetadataMap);
+    static void UpdateShortNumber(scoped_ptr<absl::flat_hash_map<std::string, PhoneMetadata>>& metadataMap);
+    static void UpdatePhoneNumber(scoped_ptr<absl::node_hash_map<int, PhoneMetadata>>& countryMetadataMap,
+        scoped_ptr<absl::node_hash_map<std::string, PhoneMetadata>>& regionMetadataMap);
     static void UpdateAlternateFormat(std::map<int, const PhoneMetadata*>& metadataMap);
     static void LoadUpdatedMetadata(int fd);
 

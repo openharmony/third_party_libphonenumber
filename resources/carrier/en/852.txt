@@ -1,37 +1,15 @@
-# Copyright (C) 2013 The Libphonenumber Authors
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-# http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Prefixes from http://www.ofca.gov.hk/mobile/en/industry_focus/telecommunications/portability/numbering/index.html
-# Hong Kong Telecommunications (HKT) Limited is a subsidiary of PCCW.
-# '3' is brand name of Hutchison Telephone Co limited.
-# New World Mobility is known as Sun Mobile now.
-# Prefix 5549 is assigned for Government use, no information on the carrier.
-# Prefix 624, 683, 69[68] and 905 which were previously assigned to CM Mobile is
-# now on hold, so carrier details are removed for these prefixes. Prefix 9057 is
-# assigned to HKT based on user report.
-
 852440|China Mobile
 852441|HKT
-852442|Hutchison Telecom.
+852442|Hutchison Telecom
 852443|HKT
 852444|HKT
-8524441|Hutchison Telecom.
-8524442|Hutchison Telecom.
+8524441|Hutchison Telecom
+8524442|Hutchison Telecom
 852445|HKT
-852446|Hutchison Telecom.
+852446|Hutchison Telecom
 852447|China Mobile
-852448|Hutchison Telecom.
+852448|Hutchison Telecom
+852449|Hutchison Telecom
 852460|China Unicom
 8524607|Multibyte
 8524608|HKT
@@ -44,6 +22,8 @@
 8524615|China Unicom
 8524616|China Unicom
 8524617|China Mobile
+8524618|China Mobile
+8524619|China Telecom Global Limited
 8524620|China Mobile
 8524621|China Mobile
 8524622|China Mobile
@@ -81,6 +61,26 @@
 852468|China Mobile
 852469|China Mobile
 8524699|South China Telecommunications
+852470|Hutchison Telecom
+852471|Hutchison Telecom
+852472|China Mobile
+8524726|Hutchison Telecom
+8524727|Hutchison Telecom
+8524728|Hutchison Telecom
+8524729|Hutchison Telecom
+8524730|Hutchison Telecom
+8524731|SmarTone
+8524732|SmarTone
+8524733|SmarTone
+8524734|SmarTone
+8524740|China Mobile
+8524741|China Mobile
+8524742|China Mobile
+8524743|HKT
+8524744|HKT
+8524748|China Telecom Global Limited
+852475|Hutchison Telecom
+852476|China Mobile
 852510|China Mobile
 852511|HKT
 852512|China Mobile
@@ -122,6 +122,7 @@
 852532|HKT
 852533|3
 852534|China Mobile
+852535|Hutchison Telecom
 852536|HKT
 852537|China Mobile
 852538|China Unicom
@@ -268,7 +269,12 @@
 852663|China Unicom
 852664|China Mobile
 852665|HKT
-852666|China Unicom
+8526660|China Unicom
+8526661|China Unicom
+8526662|China Unicom
+8526663|China Unicom
+8526664|HKT
+8526665|HKT
 852667|China Mobile
 852668|3
 852669|HKT
@@ -280,6 +286,7 @@
 852675|HKT
 852676|China Mobile
 852677|HKT
+852678|China Mobile
 852679|3
 852680|HKT
 852681|China Unicom
@@ -298,20 +305,33 @@
 852697|HKT
 852699|China Mobile
 852701|China Mobile
-852702|Hutchison Telecom.
+852702|Hutchison Telecom
+852703|Hutchison Telecom
+852704|Hutchison Telecom
+852705|Hutchison Telecom
 8527071|SmarTone
 8527072|SmarTone
 8527073|SmarTone
 8527074|SmarTone
 8527075|SmarTone
 8527076|China Mobile
-8527077|Hutchison Telecom.
-8527078|Hutchison Telecom.
-852708|HKT
-852709|Hutchison Telecom.
+8527077|Hutchison Telecom
+8527078|Hutchison Telecom
+8527080|HKT
+8527081|HKT
+8527082|HKT
+8527083|HKT
+8527084|HKT
+8527085|SmarTone
+8527086|SmarTone
+8527087|SmarTone
+8527088|SmarTone
+852709|Hutchison Telecom
 852840|China Mobile
-852841|Hutchison Telecom.
+852841|Hutchison Telecom
 852842|HKT
+852843|Hutchison Telecom
+852844|China Mobile
 8528480|HKT
 8528481|HKT
 8528482|HKT
@@ -325,8 +345,8 @@
 852901|SmarTone
 852902|HKT
 852903|HKT
-852904|Hutchison Telecom.
-852905|Hutchison Telecom.
+852904|Hutchison Telecom
+852905|Hutchison Telecom
 852906|China Mobile
 852907|HKT
 852908|HKT
@@ -361,7 +381,9 @@
 852936|3
 852937|3
 852938|SmarTone
-852939|HKT
+852939|China Mobile
+8529390|HKT
+8529391|HKT
 852940|HKT
 852941|3
 852942|3

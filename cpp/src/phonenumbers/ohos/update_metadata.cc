@@ -33,7 +33,7 @@ std::map<std::string, PhoneMetadata>* UpdateMetadata::regionMetadata = new std::
 std::map<int, PhoneMetadata>* UpdateMetadata::countryMetadata = new std::map<int, PhoneMetadata>();
 std::map<int, PhoneMetadata>* UpdateMetadata::alterMetadata = new std::map<int, PhoneMetadata>();
 
-void UpdateMetadata::UpdateShortNumber(scoped_ptr<std::map<std::string, PhoneMetadata>>& metadataMap)
+void UpdateMetadata::UpdateShortNumber(scoped_ptr<absl::flat_hash_map<std::string, PhoneMetadata>>& metadataMap)
 {
     for (auto it = shortMetadata->begin(); it != shortMetadata->end(); it++) {
         std::string code = it->first;
@@ -46,8 +46,8 @@ void UpdateMetadata::UpdateShortNumber(scoped_ptr<std::map<std::string, PhoneMet
     }
 }
 
-void UpdateMetadata::UpdatePhoneNumber(scoped_ptr<std::map<int, PhoneMetadata>>& countryMetadataMap,
-    scoped_ptr<std::map<std::string, PhoneMetadata>>& regionMetadataMap)
+ void UpdateMetadata::UpdatePhoneNumber(scoped_ptr<absl::node_hash_map<int, PhoneMetadata>>& countryMetadataMap,
+    scoped_ptr<absl::node_hash_map<std::string, PhoneMetadata>>& regionMetadataMap)
 {
     for (auto it = regionMetadata->begin(); it != regionMetadata->end(); it++) {
         std::string code = it->first;
@@ -85,6 +85,9 @@ void UpdateMetadata::UpdateAlternateFormat(std::map<int, const PhoneMetadata*>& 
 void UpdateMetadata::LoadUpdatedMetadata(int fd)
 {
     if (phoneMetadataCollection != nullptr) {
+        return;
+    }
+    if (fd == -1) {
         return;
     }
     phoneMetadataCollection = new PhoneMetadataCollection();
