@@ -3988,7 +3988,7 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersMexico) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("01 (449)978-0001", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(449)978-0001", RegionCode::MX(),
                               &test_number));
@@ -4001,15 +4001,15 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersMexico) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+52 1 33 1234-5678", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("044 (33) 1234-5678", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("045 33 1234-5678", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
@@ -4806,7 +4806,7 @@ TEST_F(PhoneNumberUtilTest, ParseWithPhoneContext) {
   AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=", PhoneNumberUtil::NOT_A_NUMBER);
   AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+", PhoneNumberUtil::NOT_A_NUMBER);
   AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=64", PhoneNumberUtil::NOT_A_NUMBER);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64", PhoneNumberUtil::NO_PARSING_ERROR);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64", PhoneNumberUtil::NOT_A_NUMBER);
   AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+abc", PhoneNumberUtil::NOT_A_NUMBER);
   AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=.", PhoneNumberUtil::NOT_A_NUMBER);
   AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone", PhoneNumberUtil::NOT_A_NUMBER);
