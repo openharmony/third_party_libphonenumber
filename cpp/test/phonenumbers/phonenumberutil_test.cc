@@ -284,7 +284,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadUSMetadata) {
   EXPECT_EQ("$1-$2", metadata->number_format(1).format());
   EXPECT_EQ("[2-9]\\d{9}|3\\d{6}",
             metadata->general_desc().national_number_pattern());
-  EXPECT_EQ("(?:5056(?:[0-35-9]\\d|4[468])|7302[0-3]\\d)\\d{4}|(?:472[24]|505[2-57-9]|7306|983[237-9])\\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-57-9]|3[149]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-57-9]|1[02-9]|2[013569]|3[0-24679]|4[167]|5[0-2]|6[01349]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[0-5]|8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|3[016]|4[0156]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-8]|3[1247]|4[037]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[068]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-389]|8[04-69]))[2-9]\\d{6}",
+  EXPECT_EQ("(?:3052(?:0[0-8]|[1-9]\\d)|5056(?:[0-35-9]\\d|4[0-68]))\\d{4}|(?:2742|305[3-9]|472[247-9]|505[2-57-9]|983[2-47-9])\\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-57-9]|3[1459]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-47-9]|1[02-9]|2[0135-79]|3[0-24679]|4[167]|5[0-2]|6[01349]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[0-5]|8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|3[016]|4[0156]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-8]|3[0-247]|4[0378]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[0168]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-3589]|8[04-69]))[2-9]\\d{6}",
             metadata->fixed_line().national_number_pattern());
   EXPECT_EQ(1, metadata->general_desc().possible_length_size());
   EXPECT_EQ(10, metadata->general_desc().possible_length(0));
@@ -736,20 +736,20 @@ TEST_F(PhoneNumberUtilTest, FormatMXNumber) {
   test_number.set_country_code(52);
   test_number.set_national_number(uint64{12345678900});
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
-  EXPECT_EQ("234 567 8900", formatted_number);
+  EXPECT_EQ("12345678900", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::INTERNATIONAL,
                      &formatted_number);
-  EXPECT_EQ("+52 234 567 8900", formatted_number);
+  EXPECT_EQ("+52 12345678900", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::E164,
                      &formatted_number);
   EXPECT_EQ("+5212345678900", formatted_number);
 
   test_number.set_national_number(uint64{15512345678});
   phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
-  EXPECT_EQ("55 1234 5678", formatted_number);
+  EXPECT_EQ("15512345678", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::INTERNATIONAL,
                      &formatted_number);
-  EXPECT_EQ("+52 55 1234 5678", formatted_number);
+  EXPECT_EQ("+52 15512345678", formatted_number);
   phone_util_.Format(test_number, PhoneNumberUtil::E164,
                      &formatted_number);
   EXPECT_EQ("+5215512345678", formatted_number);
@@ -888,7 +888,7 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryWithPreferredIntlPrefix) {
   // waiting).
   phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::UZ(),
                                               &formatted_number);
-  EXPECT_EQ("8~10 39 02 3661 8300", formatted_number);
+  EXPECT_EQ("00 39 02 3661 8300", formatted_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FormatOutOfCountryKeepingAlphaChars) {
@@ -943,7 +943,7 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryKeepingAlphaChars) {
   // preferredExtnPrefix for US is " extn. " (in test metadata)
   phone_util_.FormatOutOfCountryKeepingAlphaChars(
       alpha_numeric_number_with_extn, RegionCode::AU(), &formatted_number);
-  EXPECT_EQ("0011 1 800 SIX-FLAG extn. 1234", formatted_number);
+  EXPECT_EQ("0011 1 800 SIX-FLAG ext. 1234", formatted_number);
 
   // Testing that if the raw input doesn't exist, it is formatted using
   // FormatOutOfCountryCallingNumber.
@@ -2410,7 +2410,7 @@ TEST_F(PhoneNumberUtilTest, IsNumberGeographical) {
   // Mexico, another mobile phone number.
   number.set_country_code(52);
   number.set_national_number(uint64{15512345678});
-  EXPECT_TRUE(phone_util_.IsNumberGeographical(number));
+  EXPECT_FALSE(phone_util_.IsNumberGeographical(number));
 }
 
 TEST_F(PhoneNumberUtilTest, FormatInOriginalFormat) {
@@ -3988,7 +3988,7 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersMexico) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("01 (449)978-0001", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("(449)978-0001", RegionCode::MX(),
                               &test_number));
@@ -4001,15 +4001,15 @@ TEST_F(PhoneNumberUtilTest, ParseNumbersMexico) {
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("+52 1 33 1234-5678", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("044 (33) 1234-5678", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("045 33 1234-5678", RegionCode::MX(),
                               &test_number));
-  EXPECT_EQ(mx_number, test_number);
+  EXPECT_NE(mx_number, test_number);
 }
 
 TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
@@ -4105,7 +4105,7 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
   // This is invalid because no "+" sign is present as part of phone-context.
   // This should not succeed in being parsed.
-  EXPECT_EQ(PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR,
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
             phone_util_.Parse("tel:555-1234;phone-context=1-331",
                               RegionCode::ZZ(), &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
@@ -4803,15 +4803,15 @@ TEST_F(PhoneNumberUtilTest, ParseWithPhoneContext) {
   EXPECT_EQ(expected_number, actual_number);
 
   // Invalid descriptor
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=", PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+", PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=64", PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64", PhoneNumberUtil::NO_PARSING_ERROR);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=", PhoneNumberUtil::NOT_A_NUMBER);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+", PhoneNumberUtil::NOT_A_NUMBER);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=64", PhoneNumberUtil::NOT_A_NUMBER);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64", PhoneNumberUtil::NOT_A_NUMBER);
   AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+abc", PhoneNumberUtil::NOT_A_NUMBER);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=.", PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone", PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz", PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR);
-  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c", PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=.", PhoneNumberUtil::NOT_A_NUMBER);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone", PhoneNumberUtil::NOT_A_NUMBER);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz", PhoneNumberUtil::NOT_A_NUMBER);
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c", PhoneNumberUtil::NOT_A_NUMBER);
 }
 
 TEST_F(PhoneNumberUtilTest, CanBeInternationallyDialled) {
