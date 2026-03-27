@@ -13,7 +13,7 @@
 
 import("//build/test.gni")
 
-module_output_path = "libphonenumber/libphonenumber_test"
+module_output_path = "libphonenumber/libphonenumber"
 
 config("phonenumber_test_config") {
   include_dirs = [
