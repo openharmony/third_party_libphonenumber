@@ -4,6 +4,7 @@
     "License": "Apache-2.0",
     "License File": "LICENSE",
     "Version Number": "v9.0.10",
+    "Owner": "sunyaozu@huawei.com",
     "Upstream URL": "https://github.com/google/libphonenumber.git",
     "Description": "Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers."
   }
