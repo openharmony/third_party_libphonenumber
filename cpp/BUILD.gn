@@ -121,6 +121,9 @@ ohos_shared_library("phonenumber_standard") {
   external_deps = [
     "abseil-cpp:absl_strings",
     "abseil-cpp:absl_time",
+    "abseil-cpp:absl_throw_delegate",
+    "abseil-cpp:absl_hash",
+    "abseil-cpp:absl_container",
     "bounds_checking_function:libsec_shared",
     "icu:shared_icui18n",
     "icu:shared_icuuc",
