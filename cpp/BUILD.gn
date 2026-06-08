@@ -141,6 +141,7 @@ ohos_shared_library("geocoding") {
   external_deps = [
     "bounds_checking_function:libsec_shared",
     "icu:shared_icuuc",
+    "protobuf:protobuf_lite",
   ]
   defines = geocoding_defines
   part_name = "libphonenumber"
