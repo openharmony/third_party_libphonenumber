@@ -118,15 +118,13 @@ ohos_shared_library("phonenumber_standard") {
   public_configs = [ ":phonenumber_public_config" ]
   sources = phonenumber_source
   deps = phonenumber_deps
-  public_external_deps = [
+  external_deps = [
     "abseil-cpp:absl_strings",
     "abseil-cpp:absl_time",
-    "protobuf:protobuf_lite",
-  ]
-  external_deps = [
     "bounds_checking_function:libsec_shared",
     "icu:shared_icui18n",
     "icu:shared_icuuc",
+    "protobuf:protobuf_lite",
   ]
   defines = phonenumber_defines
   innerapi_tags = [ "platformsdk_indirect" ]
@@ -143,6 +141,7 @@ ohos_shared_library("geocoding") {
   external_deps = [
     "bounds_checking_function:libsec_shared",
     "icu:shared_icuuc",
+    "protobuf:protobuf_lite",
   ]
   defines = geocoding_defines
   part_name = "libphonenumber"
