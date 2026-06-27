@@ -48,6 +48,79 @@ using std::vector;
 using std::set;
 using std::pair;
 
+struct StringPoolEntry {
+  string str;
+  uint32_t offset;
+};
+
+class StringPool {
+public:
+  StringPool() : pool_size_(0) {}
+
+  uint32_t AddString(const string& s) {
+    auto it = string_to_index_.find(s);
+    if (it != string_to_index_.end()) {
+      return it->second;
+    }
+    uint32_t index = static_cast<uint32_t>(entries_.size());
+    StringPoolEntry entry;
+    entry.str = s;
+    entry.offset = pool_size_;
+    pool_size_ += static_cast<uint32_t>(s.size()) + 1;
+    entries_.push_back(entry);
+    string_to_index_[s] = index;
+    return index;
+  }
+
+  uint32_t GetStringCount() const { return static_cast<uint32_t>(entries_.size()); }
+  uint32_t GetPoolSize() const { return pool_size_; }
+  const vector<StringPoolEntry>& GetEntries() const { return entries_; }
+
+private:
+  vector<StringPoolEntry> entries_;
+  map<string, uint32_t> string_to_index_;
+  uint32_t pool_size_;
+};
+
+static uint8_t EncodeVarint(int32_t delta, uint8_t* output) {
+  if (delta < 0) {
+    throw std::runtime_error("delta is a negative number.");
+  }
+  if (delta > 68719476735) {
+    throw std::runtime_error("delta is beyond maximum value.");
+  }
+  if (delta < 128) {
+    output[0] = static_cast<uint8_t>(delta & 0x7F);
+    return 1;
+  } else if (delta < 16384) {
+    uint16_t value = static_cast<uint16_t>(delta);
+    output[1] = static_cast<uint8_t>(value & 0xFF);
+    output[0] = static_cast<uint8_t>((value >> 8) | 0x80);
+    return 2;
+  } else if (delta < 2097152) {
+    uint32_t value = static_cast<uint32_t>(delta);
+    output[2] = static_cast<uint8_t>(value & 0xFF);
+    output[1] = static_cast<uint8_t>((value >> 8) & 0xFF);
+    output[0] = static_cast<uint8_t>((value >> 16) | 0xC0);
+    return 3;
+  } else if (delta < 536870912) {
+    uint32_t value = static_cast<uint32_t>(delta);
+    output[3] = static_cast<uint8_t>(value & 0xFF);
+    output[2] = static_cast<uint8_t>((value >> 8) & 0xFF);
+    output[1] = static_cast<uint8_t>((value >> 16) & 0xFF);
+    output[0] = static_cast<uint8_t>((value >> 24) | 0xE0);
+    return 4;
+  } else {
+    uint32_t value = static_cast<uint32_t>(delta);
+    output[4] = static_cast<uint8_t>(value & 0xFF);
+    output[3] = static_cast<uint8_t>((value >> 8) & 0xFF);
+    output[2] = static_cast<uint8_t>((value >> 16) & 0xFF);
+    output[1] = static_cast<uint8_t>((value >> 24) & 0xFF);
+    output[0] = 0xF0;
+    return 5;
+  }
+}
+
 template <typename ResourceType> class AutoCloser {
  public:
   typedef int (*ReleaseFunction) (ResourceType* resource);
@@ -385,6 +458,142 @@ void WritePrefixDescriptions(const string& var_name,
   fprintf(output, "\n");
 }
 
+void WriteStringLiteral(const string& str, FILE* output);
+
+// Writes compressed PrefixDescriptions with delta encoding and string pooling.
+// Output format:
+//   - String pool data
+//   - String offset table
+//   - Description indices
+//   - Base prefix and encoded deltas
+//   - Possible lengths
+//   - CompressedPrefixDescriptions struct
+void WriteCompressedPrefixDescriptions(const string& var_name,
+                                       const absl::btree_map<int, string>& prefixes,
+                                       FILE* output) {
+  absl::btree_set<int> possible_lengths;
+  
+  vector<int> prefix_list;
+  vector<string> desc_list;
+  for (absl::btree_map<int, string>::const_iterator it = prefixes.begin();
+       it != prefixes.end(); ++it) {
+    prefix_list.push_back(it->first);
+    desc_list.push_back(it->second);
+    possible_lengths.insert(static_cast<int>(log10(it->first) + 1));
+  }
+  
+  StringPool pool;
+  vector<uint32_t> desc_indices;
+  for (size_t i = 0; i < desc_list.size(); ++i) {
+    desc_indices.push_back(pool.AddString(desc_list[i]));
+  }
+  
+  vector<int> deltas;
+  for (size_t i = 0; i < prefix_list.size(); ++i) {
+    if (i == 0) {
+      deltas.push_back(0);
+    } else {
+      deltas.push_back(prefix_list[i] - prefix_list[i - 1]);
+    }
+  }
+  
+  vector<uint8_t> encoded_deltas;
+  for (size_t i = 0; i < deltas.size(); ++i) {
+    uint8_t buf[5];
+    int len = EncodeVarint(deltas[i], buf);
+    for (int j = 0; j < len; ++j) {
+      encoded_deltas.push_back(buf[j]);
+    }
+  }
+  
+  const string prefixes_name = var_name + "_prefixes";
+  const string base_prefix_name = var_name + "_base_prefix";
+  const string encoded_deltas_name = var_name + "_encoded_deltas";
+  const string desc_indices_name = var_name + "_desc_indices";
+  const string possible_lengths_name = var_name + "_possible_lengths";
+  const string string_pool_name = var_name + "_string_pool";
+  const string string_offsets_name = var_name + "_string_offsets";
+  
+  fprintf(output, "const int32_t %s = %d;\n", base_prefix_name.c_str(), prefix_list[0]);
+  
+  fprintf(output, "const uint8_t %s[] = {\n", encoded_deltas_name.c_str());
+  for (size_t i = 0; i < encoded_deltas.size(); ++i) {
+    if (i % 16 == 0) {
+      fprintf(output, "\n");
+    }
+    fprintf(output, " 0x%02X,", encoded_deltas[i]);
+  }
+  fprintf(output, "\n};\n\n");
+  
+  fprintf(output, "const uint16_t %s[] = {\n", desc_indices_name.c_str());
+  for (size_t i = 0; i < desc_indices.size(); ++i) {
+    fprintf(output, " %u,", desc_indices[i]);
+    if ((i + 1) % 16 == 0) {
+      fprintf(output, "\n");
+    }
+  }
+  fprintf(output, "\n};\n\n");
+  
+  fprintf(output, "const int32_t %s[] = {\n ", possible_lengths_name.c_str());
+  for (absl::btree_set<int>::const_iterator it = possible_lengths.begin();
+       it != possible_lengths.end(); ++it) {
+    fprintf(output, " %d,", *it);
+  }
+  fprintf(output, "\n};\n\n");
+  
+  const vector<StringPoolEntry>& entries = pool.GetEntries();
+  fprintf(output, "const char %s[] = {\n", string_pool_name.c_str());
+  for (size_t i = 0; i < entries.size(); ++i) {
+    const string& s = entries[i].str;
+    for (size_t j = 0; j < s.size(); ++j) {
+      fprintf(output, " 0x%02X,", static_cast<unsigned char>(s[j]));
+    }
+    fprintf(output, " 0x00,\n");
+  }
+  fprintf(output, "};\n\n");
+  
+  fprintf(output, "const uint32_t %s[] = {\n", string_offsets_name.c_str());
+  for (size_t i = 0; i < entries.size(); ++i) {
+    fprintf(output, " %u,", entries[i].offset);
+  }
+  fprintf(output, "\n};\n\n");
+  
+  fprintf(output, "const CompressedPrefixDescriptions %s = {\n", var_name.c_str());
+  fprintf(output, "  %s,\n", base_prefix_name.c_str());
+  fprintf(output, "  %s,\n", encoded_deltas_name.c_str());
+  fprintf(output, "  sizeof(%s),\n", encoded_deltas_name.c_str());
+  fprintf(output, "  %s,\n", desc_indices_name.c_str());
+  fprintf(output, "  sizeof(%s)/sizeof(*%s),\n", desc_indices_name.c_str(), desc_indices_name.c_str());
+  fprintf(output, "  %s,\n", possible_lengths_name.c_str());
+  fprintf(output, "  sizeof(%s)/sizeof(*%s),\n", possible_lengths_name.c_str(), possible_lengths_name.c_str());
+  fprintf(output, "  %s,\n", string_pool_name.c_str());
+  fprintf(output, "  %s,\n", string_offsets_name.c_str());
+  fprintf(output, "  sizeof(%s),\n", string_pool_name.c_str());
+  fprintf(output, "};\n\n");
+}
+
+// Writes compressed prefix descriptions index arrays.
+// For compressed format, we use CompressedPrefixDescriptions pointers.
+void WriteCompressedPrefixDescriptionsIndex(
+    const absl::btree_map<string, string>& prefix_var_names, FILE* output) {
+  fprintf(output, "const char* prefix_language_code_pairs[] = {\n");
+  for (absl::btree_map<string, string>::const_iterator it = prefix_var_names.begin();
+       it != prefix_var_names.end(); ++it) {
+    fprintf(output, "  \"%s\",\n", it->first.c_str());
+  }
+  fprintf(output,
+          "};\n"
+          "\n"
+          "const CompressedPrefixDescriptions* prefixes_descriptions[] = {\n");
+  for (absl::btree_map<string, string>::const_iterator it = prefix_var_names.begin();
+       it != prefix_var_names.end(); ++it) {
+    fprintf(output, "  &%s,\n", it->second.c_str());
+  }
+  fprintf(output,
+          "};\n"
+          "\n");
+}
+
 // Writes a pair of arrays mapping prefix language code pairs to
 // PrefixDescriptions instances. "prefix_var_names" maps language code pairs
 // to prefix variable names.
@@ -524,7 +733,9 @@ string ReplaceAll(const string& input, const string& pattern,
 }
 
 // Writes data accessor definitions, prefixed with "accessor_prefix".
-void WriteAccessorsDefinitions(const string& accessor_prefix, FILE* output) {
+// If use_compressed is true, returns CompressedPrefixDescriptions*, otherwise PrefixDescriptions*.
+void WriteAccessorsDefinitions(const string& accessor_prefix, FILE* output, bool use_compressed) {
+  string desc_type = use_compressed ? "CompressedPrefixDescriptions" : "PrefixDescriptions";
   string templ =
       "const int* get$prefix$_country_calling_codes() {\n"
       "  return country_calling_codes;\n"
@@ -548,18 +759,20 @@ void WriteAccessorsDefinitions(const string& accessor_prefix, FILE* output) {
       "      /sizeof(*prefix_language_code_pairs);\n"
       "}\n"
       "\n"
-      "const PrefixDescriptions* get$prefix$_prefix_descriptions(int index) {\n"
+      "const CompressedPrefixDescriptions* get$prefix$_prefix_descriptions(int index) {\n"
       "  return prefixes_descriptions[index];\n"
       "}\n";
+  templ = ReplaceAll(templ, "$DESC_TYPE$", desc_type);
   string defs = ReplaceAll(templ, "$prefix$", accessor_prefix);
   fprintf(output, "%s", defs.c_str());
 }
 
 // Writes geocoding data .cc file. "data_path" is the path of geocoding textual
 // data directory. "base_name" is the base name of the .h/.cc pair, like
-// "geocoding_data".
+// "geocoding_data". If "use_compressed" is true, generates compressed format.
 bool WriteSource(const string& data_path, const string& base_name,
-                 const string& accessor_prefix, FILE* output) {
+                 const string& accessor_prefix, FILE* output,
+                 bool use_compressed = false) {
   WriteLicense(output);
   WriteCppHeader(base_name, output);
   WriteNSHeader(output);
@@ -584,7 +797,6 @@ bool WriteSource(const string& data_path, const string& base_name,
     const string dir_path = data_path + "/" + it->name();
     vector<DirEntry> files;
     if (!ListDirectory(dir_path, &files)) {
-      fprintf(stderr, "failed to read file entries\n");
       return false;
     }
     for (vector<DirEntry>::const_iterator it_files = files.begin();
@@ -606,25 +818,34 @@ bool WriteSource(const string& data_path, const string& base_name,
       }
 
       const string prefix_var = "prefix_" + country_code_str + "_" + it->name();
-      WritePrefixDescriptions(prefix_var, prefixes, output);
+      if (use_compressed) {
+        WriteCompressedPrefixDescriptions(prefix_var, prefixes, output);
+      } else {
+        WritePrefixDescriptions(prefix_var, prefixes, output);
+      }
       prefix_vars[country_code_str + "_" + it->name()] = prefix_var;
       country_languages[country_code].insert(it->name());
     }
   }
-  WritePrefixesDescriptions(prefix_vars, output);
+  
+  if (use_compressed) {
+    WriteCompressedPrefixDescriptionsIndex(prefix_vars, output);
+  } else {
+    WritePrefixesDescriptions(prefix_vars, output);
+  }
   if (!WriteCountryLanguages(country_languages, output)) {
     return false;
   }
   fprintf(output, "}  // namespace\n");
   fprintf(output, "\n");
-  WriteAccessorsDefinitions(accessor_prefix, output);
+  WriteAccessorsDefinitions(accessor_prefix, output, use_compressed);
   WriteNSFooter(output);
   return ferror(output) == 0;
 }
 
 int PrintHelp(const string& message) {
   fprintf(stderr, "error: %s\n", message.c_str());
-  fprintf(stderr, "generate_geocoding_data DATADIR CCPATH");
+  fprintf(stderr, "generate_geocoding_data DATADIR CCPATH [--compressed]");
   return 1;
 }
 
@@ -636,9 +857,17 @@ int Main(int argc, const char* argv[]) {
     return PrintHelp("output source path expected");
   }
   string accessor_prefix = "";
-  if (argc > 3) {
-    accessor_prefix = argv[3];
+  bool use_compressed = false;
+  
+  for (int i = 3; i < argc; ++i) {
+    string arg = argv[i];
+    if (arg == "--compressed") {
+      use_compressed = true;
+    } else {
+      accessor_prefix = arg;
+    }
   }
+  
   const string root_path(argv[1]);
   string source_path(argv[2]);
   std::replace(source_path.begin(), source_path.end(), '\\', '/');
@@ -655,7 +884,7 @@ int Main(int argc, const char* argv[]) {
   }
   AutoCloser<FILE> source_closer(&source_fp, fclose);
   if (!WriteSource(root_path, base_name, accessor_prefix,
-                   source_fp)) {
+                   source_fp, use_compressed)) {
     return 1;
   }
   return 0;
