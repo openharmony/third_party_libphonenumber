@@ -138,8 +138,6 @@ int CompressedGeocodingDataProcessor::DecodeArray(int32_t base_prefix, const uin
     int32_t current_prefix = base_prefix;
     int count = 0;
 
-    output_prefixes[count++] = current_prefix;
-
     while (ptr < end && count < output_size) {
         int32_t delta = Decode(ptr, end);
         current_prefix += delta;
