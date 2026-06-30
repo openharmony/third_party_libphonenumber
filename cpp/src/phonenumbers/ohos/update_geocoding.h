@@ -19,14 +19,16 @@
 #include <map>
 #include <string>
 #include "geocoding_data.pb.h"
+#include <mutex>
 #include "phonenumbers/geocoding/geocoding_data.h"
+#include "compressed_geocoding_data_processor.h"
 
 namespace i18n {
 namespace phonenumbers {
 class UpdateGeocoding {
 public:
     static void LoadGeocodingData(int fd);
-    static const PrefixDescriptions* UpdatePrefixDescriptions(const PrefixDescriptions** prePrefixDescriptionsArray,
+    static const PrefixDescriptions* UpdatePrefixDescriptions(const CompressedPrefixDescriptions** prePrefixDescriptionsArray,
         int index);
     static const char** UpdateLanguageCodes(const char** languageCodes, int languageCodesSize);
     static int UpdateLanguageCodesSize();
@@ -46,9 +48,11 @@ private:
     static int FindCountryCode(int countryCode);
     static bool IsLowerThan(const char* s1, const char* s2);
     static char* WriteStr(const std::string& str);
-    static std::map<std::string, PrefixDescriptions>* prefixDescriptionsMap;
+    static std::map<std::string, PrefixDescriptions*>* prefixDescriptionsMap;
     static std::map<std::string, PrefixesInfo>* prefixesInfoMap;
-    static const PrefixDescriptions** prefixDescriptionsArray;
+    static const CompressedPrefixDescriptions** prefixDescriptionsArray;
+    static PrefixDescriptions* currentPrefixDescriptions;
+    static PrefixDescriptions* keepCurrentPrefixDescriptions;
     static LanguageCodeInfo* languageCodeInfo;
     static bool isupdatedLanguageCodes;
     static const char** preLanguageCodes;

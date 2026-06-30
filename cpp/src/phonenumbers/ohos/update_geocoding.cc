@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2026 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,6 +16,7 @@
 #include <dirent.h>
 #include <fcntl.h>
 #include <cstdlib>
+#include <mutex>
 #include <unistd.h>
 #include "update_geocoding.h"
 
@@ -23,10 +24,12 @@ namespace i18n {
 namespace phonenumbers {
 GeocodingInfo* UpdateGeocoding::geocodingInfo = nullptr;
 
-std::map<std::string, PrefixDescriptions>* UpdateGeocoding::prefixDescriptionsMap =
-    new std::map<std::string, PrefixDescriptions>();
+std::map<std::string, PrefixDescriptions*>* UpdateGeocoding::prefixDescriptionsMap =
+    new std::map<std::string, PrefixDescriptions*>();
+PrefixDescriptions* UpdateGeocoding::currentPrefixDescriptions = nullptr;
+PrefixDescriptions* UpdateGeocoding::keepCurrentPrefixDescriptions = nullptr;
 std::map<std::string, PrefixesInfo>* UpdateGeocoding::prefixesInfoMap = new std::map<std::string, PrefixesInfo>();
-const PrefixDescriptions** UpdateGeocoding::prefixDescriptionsArray = nullptr;
+const CompressedPrefixDescriptions** UpdateGeocoding::prefixDescriptionsArray = nullptr;
 LanguageCodeInfo* UpdateGeocoding::languageCodeInfo = nullptr;
 bool UpdateGeocoding::isupdatedLanguageCodes = false;
 const char** UpdateGeocoding::preLanguageCodes = nullptr;
@@ -62,20 +65,29 @@ void UpdateGeocoding::LoadGeocodingData(int fd)
 }
 
 const PrefixDescriptions* UpdateGeocoding::UpdatePrefixDescriptions(
-    const PrefixDescriptions** prePrefixDescriptionsArray, int index)
+    const CompressedPrefixDescriptions** prePrefixDescriptionsArray, int index)
 {
     prefixDescriptionsArray = prePrefixDescriptionsArray;
     std::string languageCode = isupdatedLanguageCodes ? curLanguageCodes[index] : preLanguageCodes[index];
     if (prefixDescriptionsMap->find(languageCode) != prefixDescriptionsMap->end()) {
-        return &prefixDescriptionsMap->at(languageCode);
+        return prefixDescriptionsMap->at(languageCode);
     }
     int preIndex = isupdatedLanguageCodes ? FindLanguageCode(languageCode) : index;
+    if (preIndex != -1) {
+        static std::mutex currentPrefixDescriptionsMtx;
+        std::lock_guard<std::mutex> lock(currentPrefixDescriptionsMtx);
+        if (keepCurrentPrefixDescriptions != currentPrefixDescriptions) {
+            CompressedGeocodingDataProcessor::FreeExpandedData(currentPrefixDescriptions);
+        }
+        currentPrefixDescriptions = CompressedGeocodingDataProcessor::ExpandCompressedData(prefixDescriptionsArray[preIndex]);
+    }
     AddPrefixDescriptions(languageCode, preIndex);
 
     if (prefixDescriptionsMap->find(languageCode) == prefixDescriptionsMap->end()) {
-        prefixDescriptionsMap->insert(std::make_pair(languageCode, *(prefixDescriptionsArray[preIndex])));
+        prefixDescriptionsMap->insert(std::make_pair(languageCode, currentPrefixDescriptions));
+        keepCurrentPrefixDescriptions = currentPrefixDescriptions;
     }
-    return &prefixDescriptionsMap->at(languageCode);
+    return prefixDescriptionsMap->at(languageCode);
 }
 
 const char** UpdateGeocoding::UpdateLanguageCodes(const char** languageCodes, int languageCodesSize)
@@ -166,7 +178,7 @@ void UpdateGeocoding::AddPrefixDescriptions(const std::string& languageCode, int
     }
     ModifyPossibleLengths(possibleLengths, prefixesInfo, index);
  
-    PrefixDescriptions prefixDescriptions = {
+    PrefixDescriptions* prefixDescriptions = new PrefixDescriptions{
         prefixes,
         prefixesSize,
         descriptions,
@@ -186,7 +198,7 @@ void UpdateGeocoding::ModifyPrefixDescriptions(int32_t* prefixes, const char** d
     std::string description;
     int prefixesSize = 0;
     if (index != -1) {
-        prefixDescriptions = prefixDescriptionsArray[index];
+        prefixDescriptions = currentPrefixDescriptions;
         prefixesSize = prefixDescriptions->prefixes_size;
     }
     while (preIndex < prefixesSize && mdyIndex < prefixesInfo.prefixes_size()) {
@@ -235,8 +247,8 @@ void UpdateGeocoding::ModifyPossibleLengths(int32_t* possibleLengths, PrefixesIn
             possibleLengths[i] = prefixesInfo.lengths(i);
         }
     } else {
-        for (int i = 0; i < prefixDescriptionsArray[index]->possible_lengths_size; i++) {
-            possibleLengths[i] = prefixDescriptionsArray[index]->possible_lengths[i];
+        for (int i = 0; i < currentPrefixDescriptions->possible_lengths_size; i++) {
+            possibleLengths[i] = currentPrefixDescriptions->possible_lengths[i];
         }
     }
 }
