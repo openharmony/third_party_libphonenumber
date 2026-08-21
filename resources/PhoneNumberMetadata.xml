@@ -45,7 +45,7 @@
      See also:
        https://github.com/google/libphonenumber/blob/master/FAQ.md#unsupported
      -->
-
+11
 <!DOCTYPE phoneNumberMetadata [
     <!ELEMENT phoneNumberMetadata (territories)>
     <!ELEMENT territories (territory+)>
