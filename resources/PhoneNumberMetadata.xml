@@ -6540,7 +6540,7 @@
           <intlFormat>NA</intlFormat>
         </numberFormat>
         <!-- 3位区号 + 短号 -->
-        <numberFormat pattern="(\d{3})(\d{5})" nationalPrefixFormattingRule="$NP$FG"
+        <numberFormat pattern="(\d{3})(\d{5,6})" nationalPrefixFormattingRule="$NP$FG"
                       nationalPrefixOptionalWhenFormatting="true"
                       carrierCodeFormattingRule="$CC $FG">
           <leadingDigits>
@@ -6599,10 +6599,14 @@
                 7[0-79]
               )
             )(?:
-              100|
-              12[13]|
-              9[56]\d
-            )\d{2}
+              10[012]\d{2}|
+              11[68]\d{2}|
+              12[135]\d{2}|
+              14[0-4]\d{2}|
+              95[26]\d{3}|
+              95\d{3}|
+              96\d{3,4}
+            )
           </leadingDigits>
           <format>$1 $2</format>
           <intlFormat>$1 $2</intlFormat>
