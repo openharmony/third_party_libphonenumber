@@ -4853,5 +4853,29 @@ TEST_F(PhoneNumberUtilTest, IsAlphaNumber) {
   EXPECT_FALSE(phone_util_.IsAlphaNumber("+800 1234-1234"));
 }
 
+
+TEST_F(PhoneNumberUtilTest, AreaCodeWithShortNumber) {
+    PhoneNumber test_number;
+    string formatted_number;
+    test_number.set_country_code(86);
+
+    test_number.set_national_number(uint64{75512345});
+    EXPECT_TRUE(phone_util_.IsValidNumber(test_number));
+    phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
+    EXPECT_EQ("0755 12345", formatted_number);
+    test_number.set_national_number(uint64{45112345});
+    phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
+    EXPECT_EQ("0451 12345", formatted_number);
+    EXPECT_TRUE(phone_util_.IsValidNumber(test_number));
+    test_number.set_national_number(uint64{700123456789012});
+    EXPECT_TRUE(phone_util_.IsValidNumber(test_number));
+    phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
+    EXPECT_EQ("700 12345678 9012", formatted_number);
+    test_number.set_national_number(uint64{16101231234});
+    EXPECT_TRUE(phone_util_.IsValidNumber(test_number));
+    phone_util_.Format(test_number, PhoneNumberUtil::NATIONAL, &formatted_number);
+    EXPECT_EQ("161 0123 1234", formatted_number);
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n
